@@ -134,7 +134,7 @@ The administrative portal is the business's central command center, offering too
 * **Screenshot Placeholder:**
   ```
   [SCREENSHOT PLACEHOLDER: admin_order_pipeline.png]
-  Caption: Admin order list interface showcasing filter tabs, action buttons, and status badge indicators.
+  Caption: Admin order list interface showing filter tabs, action buttons, and status badge indicators.
   ```
 
 #### Sales, Inventory & CRM Reporting
@@ -237,8 +237,8 @@ The table below outlines the primary contributions of each team member:
 | Ydel Letice | Customer Relations | Audits the checkout UI, coordinates presentation layouts, and tests storefront responsiveness across mobile devices. |
 | John Paul | Operations | Validates order management views, tests SQL constraints, and audits database write behaviors. |
 | Von Eiron | Operations | Oversees inventory reporting, verifies financial calculation logic, and reviews CRM reporting tools. |
-| Aaron Jake | Development | Serves as Lead Developer. Manages repository operations, oversees the Laravel codebase, and implements MVC architecture. |
-| Novel | Development | Functions as Security Architect. Implements rate limiters, verifies database transaction safety, and configures route middleware protections. |
+| Aaron Jake | Development | Lead developer. Manages repository operations, oversees the Laravel codebase, and implements MVC architecture. |
+| Novel | Development | Security architect. Implements rate limiters, verifies database transaction safety, and configures route middleware protections. |
 
 ### Collaboration Methodology
 The project was executed using Agile software development methodologies:

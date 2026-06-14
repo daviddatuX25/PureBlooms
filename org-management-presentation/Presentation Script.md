@@ -1,4 +1,4 @@
-# 🌸 PureBlooms — Final Presentation Script
+# PureBlooms: Final Presentation Script
 **Subject:** Organizational Management (OM) | BSIT
 **Target Duration:** 12–15 minutes
 **Speakers:** 8 members (P1 to P8)
@@ -47,7 +47,7 @@
 
 ---
 
-## ACT 0 — THE OM SETUP
+## ACT 0: THE OM SETUP
 **⏱ ~1.5 minutes | Speakers: P1 then P2**
 *🎯 Focus: Honesty, Frame Setup, and OM Departmental Mapping*
 
@@ -66,13 +66,13 @@
 > "Exactly. By analyzing the system through these distinct lenses, we can map how a simple flower shop operates under the four core functions of management: **Planning, Organizing, Leading, and Controlling**."
 > 
 **[S1-5] P2 (Ruth Joy):**
-> "Our system is called **PureBlooms** — an e-commerce platform designed for a local flower shop. Let's start by looking at the organizational gap and the core business problem it solves. P3, take us away."
+> "Our system is called **PureBlooms**, an e-commerce platform designed for a local flower shop. Let's start by looking at the organizational gap and the core business problem it solves. Brix, take us away."
 
 *(Transition: Hand off to P3.)*
 
 ---
 
-## ACT 1 — THE PROBLEM HOOK
+## ACT 1: THE PROBLEM HOOK
 **⏱ ~1.5 minutes | Speakers: P3 then P1**
 *🎯 Focus: Customer Pain Points & Organizational Disarray*
 
@@ -97,14 +97,14 @@
 
 ---
 
-## ACT 2 — THE CUSTOMER EXPERIENCE
+## ACT 2: THE CUSTOMER EXPERIENCE
 **⏱ ~3 minutes | Speakers: P3 then P4 (alternating)**
 *🎯 Rubric: System Functionality & Design (40%)*
 
-*(Screen: PureBlooms homepage — storefront loaded)*
+*(Screen: PureBlooms homepage, storefront loaded)*
 
 **[S3-1] P3 (Brix):**
-> "As a customer, I want a storefront I can trust. The moment I land on the PureBlooms homepage, I see featured products, categories, and a clean, responsive layout. There's no clutter, making my browsing experience seamless."
+> "As a customer, I want a storefront I can trust. The moment I land on the PureBlooms homepage, I see featured products, categories, and a clean, responsive layout. There's no clutter, making my browsing experience smooth."
 > 
 > *(Demo Cues: Scroll through the featured product grid slowly)*
 
@@ -140,7 +140,7 @@
 
 ---
 
-## ACT 3 — THE SELLER EXPERIENCE
+## ACT 3: THE SELLER EXPERIENCE
 **⏱ ~3 minutes | Speakers: P5 then P6 (alternating)**
 *🎯 Rubric: System Functionality (40%) + OM Integration (Controlling, Financials, Inventory)*
 
@@ -152,7 +152,7 @@
 > *(Demo Cues: Point to the KPI cards on the dashboard)*
 
 **[S4-2] P6 (Von Eiron):**
-> "These metrics — Total Revenue, Orders, Pending Orders, Low Stock Alerts, and Add-on Sales — represent our **KPIs (Key Performance Indicators)**. In Organizational Management, monitoring these values is the **Controlling** function. It tells us if our logistics are matching demand."
+> "These metrics, including Total Revenue, Orders, Pending Orders, Low Stock Alerts, and Add-on Sales, represent our **KPIs (Key Performance Indicators)**. In Organizational Management, monitoring these values is the **Controlling** function. It tells us if our logistics are matching demand."
 > 
 **[S4-3] P6 (Von Eiron):**
 > "A 'Low Stock Alert' tells us exactly when to replenish inventory, moving us from reactive firefighting to proactive management."
@@ -191,14 +191,14 @@
 
 ---
 
-## ACT 4 — THE DEVELOPER PERSPECTIVE
+## ACT 4: THE DEVELOPER PERSPECTIVE
 **⏱ ~2.5 minutes | Speakers: P7 then P8 (alternating)**
 *🎯 Rubric: Problem-Solving & Innovation (20%)*
 
-*(Slide 5: Tech Stack & Architecture — Laravel, Blade, Tailwind CSS, Docker, MySQL)*
+*(Slide 5: Tech Stack & Architecture: Laravel, Blade, Tailwind CSS, Docker, MySQL)*
 
 **[S5-1] P7 (Aaron Jake):**
-> "Now, let's peek under the hood. Building a system that looks good is only half the battle. Making it robust, secure, and production-ready is where engineering matters."
+> "Now, let's peek under the hood. Building a system that looks good is only half the battle. Making it reliable, secure, and production-ready is where engineering matters."
 > 
 **[S5-2] P7 (Aaron Jake):**
 > "PureBlooms is built on the **Laravel** framework using a clean Model-View-Controller (MVC) architecture. The frontend is powered by **Blade** templates and **Tailwind CSS**, bundled with **Vite** for fast load times. The entire application is containerized using **Docker**, ensuring that it runs reliably in any environment."
@@ -218,7 +218,7 @@
 
 ---
 
-## ACT 5 — THE OM CLOSING
+## ACT 5: THE OM CLOSING
 **⏱ ~1.5 minutes | Speakers: P2 then P1**
 *🎯 Focus: Connecting the system back to OM theory & final wrap-up*
 
@@ -234,7 +234,7 @@
 > "4. **Controlling:** Implemented through our real-time inventory alerts, order pipelines, and structured reports."
 
 **[S6-3] P1 (David):**
-> "We are IT students, but today we wanted to show you more than just code. We wanted to present an organization in motion — how it coordinates, how it operates, and how it controls its data."
+> "We are IT students, but today we wanted to show you more than just code. We wanted to present an organization in motion: how it coordinates, operates, and controls its data."
 > 
 > "PureBlooms transforms a chaotic, unorganized flower shop into a structured business entity. Thank you, and we are now open for your questions."
 
