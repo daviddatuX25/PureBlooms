@@ -34,16 +34,16 @@ By integrating management theory directly into system features, PureBlooms enfor
 
 ---
 
-## 1. Project Background and Core Business Problem
+## Project Background and Core Business Problem
 
-### 1.1 Organizational Frame (Agile IT Consultancy Structure)
+### Organizational Frame (Agile IT Consultancy Structure)
 For the purpose of this project, the development team structured itself as an **Agile IT Consultancy Firm** representing four key organizational departments:
 1. **Project Management:** Responsible for coordinating system specifications, aligning project features with OM frameworks, and managing delivery timelines (led by David and Ruth Joy).
 2. **Customer Relations:** Focused on customer journey mapping, storefront user experience (UX), and front-end interface quality checks (led by Brix and Ydel Letice).
 3. **Operations:** Responsible for seller-side workflows, tracking administrative usability, verifying report calculations, and auditing inventory logic (led by John Paul and Von Eiron).
 4. **Development:** Focused on codebase maintenance, Laravel structure, database transaction safety, and non-functional security requirements (led by Aaron Jake and Novel).
 
-### 1.2 The Client Case Study
+### The Client Case Study
 The client is a local small-scale florist boutique. Previously, their sales process was entirely decentralized:
 * Customers browsed generic images on social media.
 * Orders were initiated via chat messages.
@@ -51,14 +51,14 @@ The client is a local small-scale florist boutique. Previously, their sales proc
 * Payments were made to a personal GCash number, requiring manual confirmation and manual entry in paper logs.
 * Financial reporting was nonexistent, with revenue calculated from memory or chat search history.
 
-### 1.3 System Classification
+### System Classification
 In alignment with the final requirement guidelines, the developed system is classified under **Software and Information System**. It is a software application that collects, processes, stores, and distributes information to support decision-making, coordination, and control in a retail flower business.
 
 ---
 
-## 2. System Architecture & Technical Design
+## System Architecture & Technical Design
 
-### 2.1 Model-View-Controller (MVC) Pattern
+### Model-View-Controller (MVC) Pattern
 The application uses the **Laravel** PHP framework to enforce a strict Model-View-Controller architecture. This decouples business logic, data models, and presentation interfaces:
 * **Models (`app/Models/`):** Define the database entities, relations, and business logic (e.g., `Order`, `Product`, `Addon`, `OrderItem`, `Setting`).
 * **Views (`resources/views/`):** Built with Laravel Blade templates, rendering dynamic data styled with Tailwind CSS, and structured for accessibility.
@@ -66,7 +66,7 @@ The application uses the **Laravel** PHP framework to enforce a strict Model-Vie
 
 ![MVC Architecture Diagram](mvc_diagram.png)
 
-### 2.2 Entity Relationship Diagram (ERD) Outline
+### Entity Relationship Diagram (ERD) Outline
 The system is built on a clean database schema, designed to prevent data redundancy and maintain referential integrity.
 
 1. **`users` Table:** Stores credential information, contact data, and the `role` field (`admin` vs. `customer`) to enforce access control.
@@ -79,14 +79,14 @@ The system is built on a clean database schema, designed to prevent data redunda
 
 ---
 
-## 3. System Functionality & Design
+## System Functionality & Design
 
 This section details the primary software components, modules, and user interfaces designed to support business processes.
 
-### 3.1 Customer Storefront Module
+### Customer Storefront Module
 The storefront provides a consumer-facing, mobile-responsive portal that simplifies the purchasing process.
 
-#### 3.1.1 Interactive Storefront Homepage
+#### Interactive Storefront Homepage
 * **Functionality:** Features a categorized product grid with filtering capabilities. Clear search tools allow users to locate flower categories quickly.
 * **UX Design:** Incorporates minimal styling with prominent product images, clear pricing tags, and add-to-cart call-to-actions.
 * **Screenshot Placeholder:**
@@ -95,7 +95,7 @@ The storefront provides a consumer-facing, mobile-responsive portal that simplif
   Caption: Customer homepage displaying featured bouquets, category tabs, and header navigation.
   ```
 
-#### 3.1.2 Cart & Checkout Workflow
+#### Cart & Checkout Workflow
 * **Functionality:** The storefront supports a persistent shopping cart alongside a **"Buy Now"** button for direct checkout, skipping the cart process to expedite transactions.
 * **Add-on Selection:** Integrates dynamic add-ons (e.g., custom greeting card, premium wrapping) that update the order total in real-time.
 * **Payment Support:** Supports Cash on Delivery (COD) and GCash (with dynamic payment references).
@@ -105,7 +105,7 @@ The storefront provides a consumer-facing, mobile-responsive portal that simplif
   Caption: Checkout screen displaying customer details form, payment method toggles, and dynamic add-on selection.
   ```
 
-#### 3.1.3 Order Tracking and Timeline
+#### Order Tracking and Timeline
 * **Functionality:** Upon order submission, the customer receives a unique order number. They can enter this number on the tracking page to view a progress timeline.
 * **Tracking States:** Renders four distinct phases: `Pending` → `Processing` → `Shipped` → `Delivered`.
 * **Screenshot Placeholder:**
@@ -116,10 +116,10 @@ The storefront provides a consumer-facing, mobile-responsive portal that simplif
 
 ---
 
-### 3.2 Operations Center (Admin Panel)
+### Operations Center (Admin Panel)
 The administrative portal serves as the business's central command center, offering tools to manage operations and monitor performance.
 
-#### 3.2.1 Real-Time KPI Dashboard
+#### Real-Time KPI Dashboard
 * **Functionality:** Displays primary key performance indicators (KPIs) immediately upon admin login.
 * **Tracked Metrics:** Total Revenue, Total Orders, Pending Orders, Low Stock Alerts, and Add-on Sales.
 * **Screenshot Placeholder:**
@@ -128,7 +128,7 @@ The administrative portal serves as the business's central command center, offer
   Caption: Admin Dashboard showing high-level KPIs, metric cards, and low-stock notification alerts.
   ```
 
-#### 3.2.2 Order Pipeline Management
+#### Order Pipeline Management
 * **Functionality:** Provides a central registry of all incoming orders. Administrators can filter orders by status, inspect transaction summaries, and transition orders through fulfillment stages.
 * **Order Status Updates:** Changes are logged, updating the customer tracking view and triggering automated updates.
 * **Screenshot Placeholder:**
@@ -137,7 +137,7 @@ The administrative portal serves as the business's central command center, offer
   Caption: Admin order list interface showcasing filter tabs, action buttons, and status badge indicators.
   ```
 
-#### 3.2.3 Sales, Inventory & CRM Reporting
+#### Sales, Inventory & CRM Reporting
 * **Functionality:** The system replaces manual spreadsheets with three dedicated, auto-generated report modules:
   * **Sales Report:** Tracks daily, monthly, and yearly revenue patterns, showing total orders and average order value (AOV).
   * **Inventory Report:** Displays current stock levels, low-stock warnings, and the total financial asset value of items in the warehouse.
@@ -148,7 +148,7 @@ The administrative portal serves as the business's central command center, offer
   Caption: Admin Sales Report displaying order frequencies and total revenue metrics.
   ```
 
-#### 3.2.4 Shop Settings and Maintenance Mode
+#### Shop Settings and Maintenance Mode
 * **Functionality:** Allows administrators to modify core operating rules, change payment options, update contact information, and upload shop logos.
 * **Maintenance Toggle:** Includes a global switch to place the site under a "Maintenance Mode" page during inventory restocks or server updates, preventing incoming orders while preserving admin access.
 * **Screenshot Placeholder:**
@@ -159,7 +159,7 @@ The administrative portal serves as the business's central command center, offer
 
 ---
 
-### 3.3 UI/UX Design Philosophy
+### UI/UX Design Philosophy
 * **Cognitive Load Reduction:** Designed to keep layout components spaced and intuitive. Product cards, add-on checkboxes, and form inputs are clean, reducing user friction.
 * **HSL Color Harmony:** Uses a soft, warm color palette matching the botanical business category (curated rose pinks, soft sage greens, and neutral backgrounds), avoiding harsh default browser styles.
 * **Typography:** Integrates modern, readable sans-serif typography (e.g., Outfit or Inter) loaded from Google Fonts.
@@ -167,51 +167,49 @@ The administrative portal serves as the business's central command center, offer
 
 ---
 
-## 4. Problem-Solving, Security & Non-Functional Innovations
+## Problem-Solving, Security & Non-Functional Innovations
 
 PureBlooms implements several technical safeguards to address common failure points in transactional software.
 
-### 4.1 Database Transactions for Data Integrity
+### Database Transactions for Data Integrity
 * **The Problem:** In standard web setups, if a connection drops or a server errors while writing order details (after deducting stock), the system can drift into an inconsistent state (e.g., stock is reduced, but no order record is saved).
 * **The Solution:** The checkout process is wrapped in database transactions (`DB::transaction`). If any database write fails (e.g., saving order metadata, saving order items, or updating product quantities), the system rolls back all writes. Either the entire transaction succeeds, or the database reverts to its original state.
 
-### 4.2 Server-Side Security Validation (Price Protection)
+### Server-Side Security Validation (Price Protection)
 * **The Problem:** E-commerce systems are sometimes vulnerable to "price hijacking," where a user modifies product prices using the browser's developer inspector tool prior to form submission.
 * **The Solution:** PureBlooms ignores product and add-on price parameters sent in client requests. During checkout processing, the system takes the product ID from the client, retrieves the price from the secure database, and calculates the totals server-side.
 
-### 4.3 Brute-Force Mitigation
+### Brute-Force Mitigation
 * **The Problem:** Attackers may use automated scripts to guess passwords on administrative login screens.
 * **The Solution:** Implements rate limiting and throttling via Laravel middleware (`throttle:3,60` on password updates and standard login forms). If a user fails authentication multiple times, the system blocks further attempts from their IP address for a set window.
 
-### 4.4 Duplicate Order Prevention (Cart Session Tokens)
+### Duplicate Order Prevention (Cart Session Tokens)
 * **The Problem:** Customers sometimes click the "Submit Order" button multiple times due to slow internet connections, generating duplicate transactions, incorrect inventory deductions, and double-billing.
 * **The Solution:** The checkout form generates a unique cart session token. When the checkout request is received, the system verifies and flags this token. If a duplicate request with the same token is sent immediately after, the system filters out the subsequent request.
 
-### 4.5 Settings Cache & Maintenance Mode Middleware
+### Settings Cache & Maintenance Mode Middleware
 * **The Problem:** Querying settings from the database on every page load adds unnecessary database queries, slowing response times.
 * **The Solution:** App settings are cached. A custom middleware (`App\Http\Middleware\CheckMaintenanceMode`) intercepts all public traffic and redirects visitors to `/maintenance` when maintenance mode is active, while allowing authenticated administrators to navigate the site.
 
 ---
 
-## 5. Organizational Management (OM) Integration
-
-PureBlooms is designed around the four primary functions of Organizational Management.
+## Organizational Management (OM) Integration
 
 ![OM Framework Diagram](om_framework_diagram.png)
 
-### 5.1 Planning Function
+### Planning Function
 * **Definition:** Defining organizational goals, formulating strategies, and setting policies to coordinate activities.
 * **System Mapping:** Managed through the **Settings module**. Administrators can plan store parameters, activate or deactivate payment methods, and toggle Maintenance Mode. This lets management define active operational boundaries and handle transitions (e.g., closing the shop temporarily during holidays or supply chain delays).
 
-### 5.2 Organizing Function
+### Organizing Function
 * **Definition:** Designing administrative structures, assigning tasks, grouping activities, and allocating resources.
 * **System Mapping:** Supported by **Role-Based Access Control (RBAC) middleware**. The system enforces two distinct roles: Customers and Admins. Only authenticated administrators have access to inventory management, reporting modules, and settings dashboards. This maps authorization boundaries to personnel roles.
 
-### 5.3 Leading Function
+### Leading Function
 * **Definition:** Directing, motivating, and influencing stakeholders to achieve organizational objectives using data-driven insights.
 * **System Mapping:** Enabled through the **KPI Dashboard**. Managers access real-time metrics on sales performance, order counts, and customer buying patterns. These insights guide marketing campaigns, staffing allocations, and pricing adjustments.
 
-### 5.4 Controlling Function
+### Controlling Function
 * **Definition:** Monitoring performance, comparing it with organizational goals, and taking corrective actions.
 * **System Mapping:** Supported by the following components:
   * **Low Stock Alerts:** Automatically flags items falling below defined inventory thresholds, signaling replenishment needs.
@@ -220,26 +218,14 @@ PureBlooms is designed around the four primary functions of Organizational Manag
 
 ---
 
-## 6. Team Collaboration and Contribution Log
+## Team Collaboration and Contribution Log
 
-### 6.1 Team Organizational Structure
+### Team Organizational Structure
 The team divided responsibilities across four distinct functional departments, mirroring a structured IT consultancy organization:
 
-```
-                         ┌──────────────────────────┐
-                         │      Project Lead        │
-                         │   David & Ruth Joy       │
-                         └────────────┬─────────────┘
-                                      │
-           ┌──────────────────────────┼──────────────────────────┐
-           ▼                          ▼                          ▼
-    ┌─────────────┐            ┌─────────────┐            ┌─────────────┐
-    │Customer Rel.│            │ Operations  │            │ Development │
-    │Brix & Ydel  │            │JP & VonEiron│            │Aaron & Novel│
-    └─────────────┘            └─────────────┘            └─────────────┘
-```
+![Team Organizational Structure](team_structure_diagram.png)
 
-### 6.2 Individual Contributions Log
+### Individual Contributions Log
 
 The table below outlines the primary contributions of each team member:
 
@@ -254,7 +240,7 @@ The table below outlines the primary contributions of each team member:
 | Aaron Jake | Development | Serves as Lead Developer. Manages repository operations, oversees the Laravel codebase, and implements MVC architecture. |
 | Novel | Development | Functions as Security Architect. Implements rate limiters, verifies database transaction safety, and configures route middleware protections. |
 
-### 6.3 Collaboration Methodology
+### Collaboration Methodology
 The project was executed using Agile software development methodologies:
 * **Requirements Gathering:** The Project Management and Customer Relations departments gathered requirements from the florist client.
 * **Iterative Sprints:** The Development department implemented features in weekly sprints, prioritizing critical paths (Storefront → Checkout → Admin Control → Reporting).
@@ -263,7 +249,7 @@ The project was executed using Agile software development methodologies:
 
 ---
 
-## 7. Conclusion
+## Conclusion
 
 PureBlooms demonstrates how software engineering can address operational challenges in small-scale retail businesses. By replacing manual workflows with structured digital processes, the system establishes a framework that supports the core functions of Organizational Management (OM). 
 
