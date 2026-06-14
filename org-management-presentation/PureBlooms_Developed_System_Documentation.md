@@ -9,7 +9,7 @@
 
 ---
 
-## 📋 Document Metadata & Team Roster
+## Document Metadata & Team Roster
 
 | Student Name | Project Role / Assignment | Organization Department |
 | :--- | :--- | :--- |
@@ -24,13 +24,13 @@
 
 ---
 
-## 📌 Executive Summary
+## Executive Summary
 
 PureBlooms is a bespoke, containerized **Software and Information System** designed for a local retail floral business. Small retail gifting shops often operate in a state of organizational disarray, relying on decentralized social media direct messages (DMs), manual ledger entries, and approximate inventory estimation. This operational fragmentation results in lost orders, double-booked stock, and untracked financial transactions, which directly violates the core principles of Organizational Management (OM).
 
 To bridge this operational gap, the Agile IT Consultancy Team developed **PureBlooms**. Built on the Laravel MVC framework, styled with Tailwind CSS, and containerized using Docker, the system operates as a unified operational control panel. For customers, it offers a frictionless, low-cognitive-load web storefront with dynamic add-ons and a live order tracking pipeline. For administrators (sellers), it provides a real-time key performance indicator (KPI) dashboard, order processing pipelines, automated inventory stock alerts, and financial intelligence tools. 
 
-By integrating management theory directly into system features, PureBlooms enforces the four core management functions—**Planning, Organizing, Leading, and Controlling**—transforming chaotic workflows into structured, auditable business processes.
+By integrating management theory directly into system features, PureBlooms enforces the four core management functions: **Planning, Organizing, Leading, and Controlling**. This structures chaotic workflows into auditable business processes.
 
 ---
 
@@ -117,7 +117,7 @@ The storefront provides a consumer-facing, mobile-responsive portal that simplif
 ---
 
 ### Operations Center (Admin Panel)
-The administrative portal serves as the business's central command center, offering tools to manage operations and monitor performance.
+The administrative portal is the business's central command center, offering tools to manage operations and monitor performance.
 
 #### Real-Time KPI Dashboard
 * **Functionality:** Displays primary key performance indicators (KPIs) immediately upon admin login.
@@ -163,7 +163,7 @@ The administrative portal serves as the business's central command center, offer
 * **Cognitive Load Reduction:** Designed to keep layout components spaced and intuitive. Product cards, add-on checkboxes, and form inputs are clean, reducing user friction.
 * **HSL Color Harmony:** Uses a soft, warm color palette matching the botanical business category (curated rose pinks, soft sage greens, and neutral backgrounds), avoiding harsh default browser styles.
 * **Typography:** Integrates modern, readable sans-serif typography (e.g., Outfit or Inter) loaded from Google Fonts.
-* **Responsive Grid Layouts:** Employs CSS Flexbox and Grid layouts to ensure the storefront functions seamlessly on mobile devices, tablets, and desktop displays.
+* **Responsive Grid Layouts:** Employs CSS Flexbox and Grid layouts to ensure the storefront functions smoothly on mobile devices, tablets, and desktop displays.
 
 ---
 
@@ -253,4 +253,4 @@ The project was executed using Agile software development methodologies:
 
 PureBlooms demonstrates how software engineering can address operational challenges in small-scale retail businesses. By replacing manual workflows with structured digital processes, the system establishes a framework that supports the core functions of Organizational Management (OM). 
 
-For the business owner, the platform provides the **control** needed to manage inventory, track order lifecycles, and analyze sales performance. For the customer, it delivers a transparent and user-friendly shopping experience. Through security safeguards, transaction rollbacks, and a containerized environment, PureBlooms offers a robust, production-ready solution that bridges the gap between software development and business operations.
+For the business owner, the platform provides the **control** needed to manage inventory, track order lifecycles, and analyze sales performance. For the customer, it delivers a transparent and user-friendly shopping experience. Through security safeguards, transaction rollbacks, and a containerized environment, PureBlooms offers a stable, production-ready solution that bridges the gap between software development and business operations.
