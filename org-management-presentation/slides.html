@@ -19,6 +19,7 @@
             --accent-gold: #dfb260;
             --accent-rose: #ff7e9b;
             --accent-green: #3cd070;
+            --accent-blue: #38bdf8;
             --glass-blur: 12px;
             --font-header: 'Outfit', sans-serif;
             --font-body: 'Inter', sans-serif;
@@ -38,8 +39,8 @@
             height: 100vh;
             width: 100vw;
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            justify-content: center;
+            align-items: center;
             background-image: 
                 radial-gradient(circle at 10% 20%, rgba(223, 178, 96, 0.05) 0%, transparent 40%),
                 radial-gradient(circle at 90% 80%, rgba(255, 126, 155, 0.05) 0%, transparent 40%),
@@ -64,71 +65,22 @@
             transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        /* Header Area */
-        header {
-            padding: 2.5rem 4rem 1rem 4rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 10;
-        }
-
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .logo-icon {
-            font-size: 2rem;
-            animation: float 4s ease-in-out infinite;
-        }
-
-        .logo-text {
-            font-family: var(--font-header);
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #ffffff 50%, var(--text-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .logo-tag {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent-gold);
-            font-weight: 600;
-            border: 1px solid rgba(223, 178, 96, 0.3);
-            padding: 2px 8px;
-            border-radius: 4px;
-            background: rgba(223, 178, 96, 0.05);
-        }
-
-        .subject-tag {
-            font-family: var(--font-header);
-            font-size: 1rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-        }
-
         /* Main Presentation Canvas */
         .presentation-canvas {
-            flex-grow: 1;
+            width: 100%;
+            max-width: 1200px;
+            height: 85vh;
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
-            padding: 1rem 4rem;
+            padding: 1rem;
         }
 
         .slide {
             position: absolute;
             width: 100%;
-            max-width: 1200px;
-            height: 80%;
-            max-height: 600px;
+            height: 100%;
             opacity: 0;
             transform: translateY(30px) scale(0.98);
             pointer-events: none;
@@ -157,8 +109,7 @@
             height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            transition: border 0.5s ease;
+            justify-content: center;
             position: relative;
         }
 
@@ -198,21 +149,8 @@
 
         .slide-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.1fr 0.9fr;
             gap: 3rem;
-            align-items: center;
-            height: 100%;
-        }
-
-        .slide-left {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .slide-right {
-            display: flex;
-            justify-content: center;
             align-items: center;
         }
 
@@ -231,34 +169,6 @@
             line-height: 1.3;
             overflow-x: auto;
             box-shadow: inset 0 4px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        .team-badge-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin-top: 1.5rem;
-        }
-
-        .team-badge {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            padding: 8px;
-            text-align: center;
-        }
-
-        .team-badge .role-tag {
-            font-size: 0.7rem;
-            color: var(--accent-gold);
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .team-badge .names {
-            font-size: 0.8rem;
-            margin-top: 4px;
-            color: var(--text-primary);
         }
 
         /* Slide 2: Problem Statement */
@@ -316,7 +226,7 @@
         .journey-flow {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1.2rem;
             width: 100%;
         }
 
@@ -519,97 +429,27 @@
             color: #ffffff;
         }
 
-        /* Footer Area */
-        footer {
-            padding: 1rem 4rem 2.5rem 4rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 10;
-        }
-
-        .nav-controls {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .nav-btn {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            color: var(--text-primary);
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .nav-btn:hover {
-            background: var(--accent-gold);
-            color: var(--bg-color);
-            border-color: var(--accent-gold);
-            transform: translateY(-2px);
-        }
-
-        .slide-counter {
-            font-family: var(--font-header);
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-
-        .speaker-badge-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 8px 18px;
-            border-radius: 30px;
-            backdrop-filter: blur(10px);
-        }
-
-        .speaker-label {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .speaker-names {
-            font-family: var(--font-header);
-            font-size: 1rem;
+        /* System Showcase Badge */
+        .showcase-badge {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: var(--accent-blue);
+            padding: 5px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
             font-weight: 600;
-            color: var(--accent-rose);
-        }
-
-        /* Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-header);
+            letter-spacing: 0.5px;
+            align-self: flex-start;
         }
 
         /* Utility classes */
         .highlight-gold { color: var(--accent-gold); }
         .highlight-rose { color: var(--accent-rose); }
         .highlight-green { color: var(--accent-green); }
-
-        /* Keyboard help label */
-        .keyboard-hint {
-            position: fixed;
-            bottom: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.2);
-            pointer-events: none;
-            letter-spacing: 0.5px;
-        }
     </style>
 </head>
 <body>
@@ -619,24 +459,11 @@
         <div class="progress-bar" id="progressBar"></div>
     </div>
 
-    <!-- Header -->
-    <header>
-        <div class="logo-area">
-            <span class="logo-icon">🌸</span>
-            <span class="logo-text">PureBlooms</span>
-            <span class="logo-tag">OM CASE STUDY</span>
-        </div>
-        <div style="display: flex; align-items: center; gap: 20px;">
-            <div class="subject-tag">Organizational Management Final Presentation</div>
-            <a href="index.html" style="color: var(--accent-gold); text-decoration: none; font-size: 0.85rem; border: 1px solid rgba(223, 178, 96, 0.3); padding: 5px 12px; border-radius: 8px; background: rgba(223, 178, 96, 0.05); font-weight: 500; font-family: var(--font-header); transition: all 0.2s ease;" onmouseover="this.style.background='var(--accent-gold)'; this.style.color='#0c1210'" onmouseout="this.style.background='rgba(223, 178, 96, 0.05)'; this.style.color='var(--accent-gold)'">Back to Hub</a>
-        </div>
-    </header>
-
     <!-- Presentation Canvas -->
     <main class="presentation-canvas">
 
         <!-- Slide 1: Welcome & Setup -->
-        <div class="slide active" data-slide="1" data-speakers="P1 & P2" data-speaker-names="David & Ruth Joy">
+        <div class="slide active" data-slide="1">
             <div class="glass-card">
                 <div class="slide-grid">
                     <div class="slide-left">
@@ -645,23 +472,11 @@
                         <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 2rem; font-size: 1.05rem;">
                             An IT project evaluated through the lens of Organizational Management. Stepping into stakeholder roles to analyze core operations, logistics control, and system architecture.
                         </p>
-                        <div class="team-badge-grid">
-                            <div class="team-badge">
-                                <div class="role-tag">Narrators</div>
-                                <div class="names">David & Ruth Joy</div>
-                            </div>
-                            <div class="team-badge">
-                                <div class="role-tag">Customer</div>
-                                <div class="names">Aaron & Ydel</div>
-                            </div>
-                            <div class="team-badge">
-                                <div class="role-tag">Seller</div>
-                                <div class="names">John & Von</div>
-                            </div>
-                            <div class="team-badge">
-                                <div class="role-tag">Developer</div>
-                                <div class="names">Brix & Novel</div>
-                            </div>
+                        <div style="margin-top: 1rem;">
+                            <h4 style="font-family: var(--font-header); font-size: 1.1rem; color: var(--accent-gold); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px;">Project Presenters:</h4>
+                            <p style="color: #ffffff; font-size: 1rem; line-height: 1.6; font-weight: 500;">
+                                Aaron Jake, Ydel Letice, John Paul, Von Eiron, Brix, Novel, Ruth Joy, & David
+                            </p>
                         </div>
                     </div>
                     <div class="slide-right">
@@ -686,7 +501,7 @@
         </div>
 
         <!-- Slide 2: The Core Problem -->
-        <div class="slide" data-slide="2" data-speakers="P3 & P1" data-speaker-names="Aaron Jake & David">
+        <div class="slide" data-slide="2">
             <div class="glass-card">
                 <div class="slide-grid">
                     <div class="slide-left">
@@ -730,13 +545,16 @@
         </div>
 
         <!-- Slide 3: Customer Experience -->
-        <div class="slide" data-slide="3" data-speakers="P3 & P4" data-speaker-names="Aaron Jake & Ydel Letice">
+        <div class="slide" data-slide="3">
             <div class="glass-card">
                 <div class="slide-grid">
                     <div class="slide-left">
-                        <span class="slide-subtitle">Storefront & Logistics</span>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; width: 100%;">
+                            <span class="slide-subtitle" style="margin-bottom: 0;">Storefront & Logistics</span>
+                            <span class="showcase-badge">🔄 SYSTEM DEMO SHOWCASE</span>
+                        </div>
                         <h2 class="slide-title">Seamless Customer Journey</h2>
-                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.95rem;">
+                        <p style="color: var(--text-secondary); margin-bottom: 1.2rem; font-size: 0.95rem;">
                             PureBlooms creates a high-trust customer journey designed to reduce friction and eliminate communication gaps.
                         </p>
                         <div class="journey-flow">
@@ -775,13 +593,16 @@
         </div>
 
         <!-- Slide 4: Seller Experience -->
-        <div class="slide" data-slide="4" data-speakers="P5 & P6" data-speaker-names="John Paul & Von Eiron">
+        <div class="slide" data-slide="4">
             <div class="glass-card">
                 <div class="slide-grid">
                     <div class="slide-left">
-                        <span class="slide-subtitle">Operational Control Panel</span>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; width: 100%;">
+                            <span class="slide-subtitle" style="margin-bottom: 0;">Operational Control Panel</span>
+                            <span class="showcase-badge">🔄 SYSTEM DEMO SHOWCASE</span>
+                        </div>
                         <h2 class="slide-title">Managing Operations Through Data</h2>
-                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.95rem;">
+                        <p style="color: var(--text-secondary); margin-bottom: 1.2rem; font-size: 0.95rem;">
                             The Admin Dashboard acts as the central command room. Business choices are driven by data dashboards and pipeline trackers.
                         </p>
                         <div style="display: flex; flex-direction: column; gap: 1rem;">
@@ -842,7 +663,7 @@
         </div>
 
         <!-- Slide 5: Tech Perspective -->
-        <div class="slide" data-slide="5" data-speakers="P7 & P8" data-speaker-names="Brix & Novel">
+        <div class="slide" data-slide="5">
             <div class="glass-card">
                 <div class="slide-grid">
                     <div class="slide-left">
@@ -897,7 +718,7 @@
         </div>
 
         <!-- Slide 6: OM Closing -->
-        <div class="slide" data-slide="6" data-speakers="P2 & P1" data-speaker-names="Ruth Joy & David">
+        <div class="slide" data-slide="6">
             <div class="glass-card">
                 <span class="slide-subtitle">Theoretical Synthesis</span>
                 <h2 class="slide-title">OM Core Integration Summary</h2>
@@ -937,31 +758,9 @@
 
     </main>
 
-    <!-- Footer -->
-    <footer>
-        <!-- Nav Controls -->
-        <div class="nav-controls">
-            <button class="nav-btn" id="prevBtn" aria-label="Previous Slide">←</button>
-            <span class="slide-counter"><span id="currentSlideNum">1</span> / 6</span>
-            <button class="nav-btn" id="nextBtn" aria-label="Next Slide">→</button>
-        </div>
-
-        <!-- Speaker Badge -->
-        <div class="speaker-badge-container">
-            <span class="speaker-label">Active Speaker:</span>
-            <span class="speaker-names" id="activeSpeaker">P1 & P2 (David & Ruth Joy)</span>
-        </div>
-    </footer>
-
-    <span class="keyboard-hint">Press [Space] or [→] to advance, [←] to go back</span>
-
     <!-- Navigation Logic -->
     <script>
         const slides = document.querySelectorAll('.slide');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const currentSlideNum = document.getElementById('currentSlideNum');
-        const activeSpeaker = document.getElementById('activeSpeaker');
         const progressBar = document.getElementById('progressBar');
         
         let currentSlideIdx = 0;
@@ -972,13 +771,9 @@
             slides.forEach((slide, idx) => {
                 if (idx === currentSlideIdx) {
                     slide.classList.add('active');
-                    // Update metadata
-                    const speakers = slide.getAttribute('data-speakers');
-                    const names = slide.getAttribute('data-speaker-names');
-                    currentSlideNum.textContent = idx + 1;
-                    activeSpeaker.textContent = `${speakers} (${names})`;
-                    // Update progress bar
-                    progressBar.style.width = `${((idx + 1) / totalSlides) * 100}%`;
+                    if (progressBar) {
+                        progressBar.style.width = `${((idx + 1) / totalSlides) * 100}%`;
+                    }
                 } else {
                     slide.classList.remove('active');
                 }
@@ -1022,10 +817,6 @@
                 activeStepIdx = (activeStepIdx + 1) % steps.length;
             }, 3000);
         }
-
-        // Event Listeners
-        prevBtn.addEventListener('click', prevSlide);
-        nextBtn.addEventListener('click', nextSlide);
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight' || e.key === ' ') {
