@@ -227,6 +227,7 @@
             display: flex;
             gap: 8px;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .filter-label {
@@ -315,6 +316,7 @@
             border-radius: 0 10px 10px 0;
             padding: 1.2rem;
             margin-bottom: 2rem;
+            transition: opacity 0.3s ease;
         }
 
         .cue-header {
@@ -345,8 +347,7 @@
 
         /* Focus mode classes */
         .script-block.faded {
-            opacity: 0.25;
-            filter: blur(0.5px);
+            display: none; /* Hide non-matching turns entirely when filtering to export/copy paste cleanly! */
         }
 
         .script-block.highlighted {
@@ -354,7 +355,7 @@
             border: 1px solid var(--highlight-border);
             border-radius: 10px;
             padding: 1.2rem;
-            transform: scale(1.02);
+            transform: scale(1.01);
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
@@ -465,6 +466,41 @@
             background: rgba(255,255,255,0.05);
         }
 
+        /* Print formatting */
+        @media print {
+            body {
+                background: #ffffff !important;
+                color: #000000 !important;
+                height: auto !important;
+                overflow: visible !important;
+            }
+            header, .sidebar, .toolbar, .timer-widget {
+                display: none !important;
+            }
+            .content-area {
+                background: #ffffff !important;
+            }
+            .notes-scroller {
+                padding: 0 !important;
+                overflow: visible !important;
+            }
+            .spoken-wordings {
+                color: #000000 !important;
+            }
+            .speaker-name {
+                color: #555555 !important;
+            }
+            .script-block.highlighted {
+                background: transparent !important;
+                border: 1px solid #000000 !important;
+                padding: 1rem !important;
+            }
+            .cue-panel {
+                border-left: 4px solid #000000 !important;
+                background: #f5f5f5 !important;
+            }
+        }
+
         /* Keyframe animations */
         @keyframes pulse {
             0% { opacity: 0.9; }
@@ -497,7 +533,15 @@
         <!-- Sidebar Slide List -->
         <div class="sidebar">
             <div class="sidebar-header">Slide Navigator</div>
-            <div class="slide-list-item active" onclick="goToSlide(0)">
+            <div class="slide-list-item active" onclick="goToAllSlides()">
+                <div class="slide-list-meta">
+                    <span class="slide-num-tag">ALL SLIDES</span>
+                    <span class="slide-duration">~12:00</span>
+                </div>
+                <div class="slide-list-title">Full Script Preview</div>
+                <span class="slide-speakers-tag">All Presenters</span>
+            </div>
+            <div class="slide-list-item" onclick="goToSlide(0)">
                 <div class="slide-list-meta">
                     <span class="slide-num-tag">SLIDE 1</span>
                     <span class="slide-duration">~1:30</span>
@@ -770,7 +814,7 @@
             }
         ];
 
-        let activeSlideIdx = 0;
+        let activeSlideIdx = -1; // Default to ALL SLIDES
         let activeSpeakerFilter = 'ALL';
         let baseFontSize = 16; // px
 
@@ -782,10 +826,10 @@
             activeSlideIdx = slideIdx;
             const slide = slideNotes[slideIdx];
             
-            // Highlight active slide in sidebar
+            // Highlight active slide in sidebar (slides are offset by 1 because All Slides is at child 0)
             const sidebarItems = document.querySelectorAll('.slide-list-item');
             sidebarItems.forEach((item, idx) => {
-                if (idx === slideIdx) {
+                if (idx === slideIdx + 1) {
                     item.classList.add('active');
                 } else {
                     item.classList.remove('active');
@@ -821,8 +865,6 @@
 
                 // Match tag colors
                 const tagClass = `speaker-tag tag-${line.spk.toLowerCase()}`;
-                
-                // Turn Sequence Index (e.g. S1-1, S2-3)
                 const turnIndex = `S${slideIdx + 1}-${lineIdx + 1}`;
 
                 html += `
@@ -842,14 +884,96 @@
             html += `</div>`;
 
             document.getElementById('notesContent').innerHTML = html;
+            applyTextSize();
+        }
+
+        function loadAllSlidesNotes() {
+            activeSlideIdx = -1;
             
-            // Apply text size changes
+            // Highlight All Slides item in sidebar
+            const sidebarItems = document.querySelectorAll('.slide-list-item');
+            sidebarItems.forEach((item, idx) => {
+                if (idx === 0) { 
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+
+            let html = `
+                <div class="slide-meta-header">
+                    <span class="slide-duration" style="float: right; font-size: 1rem;">Total Duration: ~12:00</span>
+                    <h2 class="notes-slide-title">Full Presentation Script</h2>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Displaying notes and cues for all slides. Filter matches will display, non-matches are filtered out.</p>
+                </div>
+            `;
+
+            slideNotes.forEach((slide, slideIdx) => {
+                // Determine slide line items filter matching count
+                let matchCount = 0;
+                slide.lines.forEach((line) => {
+                    if (activeSpeakerFilter === 'ALL' || line.spk === activeSpeakerFilter) {
+                        matchCount++;
+                    }
+                });
+
+                html += `
+                    <div style="margin-top: 3rem; margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; display: flex; justify-content: space-between; align-items: center; ${matchCount === 0 && activeSpeakerFilter !== 'ALL' ? 'display: none !important;' : ''}">
+                        <h3 style="font-family: var(--font-header); font-size: 1.4rem; color: var(--accent-blue);">Slide ${slideIdx + 1}: ${slide.title}</h3>
+                        <span style="font-size: 0.85rem; color: var(--accent-gold); font-weight: 500;">${slide.duration}</span>
+                    </div>
+
+                    <div class="cue-panel" style="margin-bottom: 1.5rem; ${matchCount === 0 && activeSpeakerFilter !== 'ALL' ? 'display: none !important;' : ''}">
+                        <div class="cue-header">Slide ${slideIdx + 1} Cues</div>
+                        <div class="cue-content">${slide.cues}</div>
+                    </div>
+
+                    <div class="script-lines" style="margin-bottom: 2rem;">
+                `;
+
+                slide.lines.forEach((line, lineIdx) => {
+                    // Determine class based on current speaker filter
+                    let focusClass = 'script-block';
+                    if (activeSpeakerFilter !== 'ALL') {
+                        if (line.spk === activeSpeakerFilter) {
+                            focusClass += ' highlighted';
+                        } else {
+                            focusClass += ' faded';
+                        }
+                    }
+
+                    // Match tag colors
+                    const tagClass = `speaker-tag tag-${line.spk.toLowerCase()}`;
+                    const turnIndex = `S${slideIdx + 1}-${lineIdx + 1}`;
+
+                    html += `
+                        <div class="${focusClass}" style="margin-bottom: 1rem;">
+                            <div class="speaker-badge-row" style="display: flex; align-items: center; justify-content: space-between;">
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <span class="${tagClass}">${line.spk}</span>
+                                    <span class="speaker-name">${line.name}</span>
+                                </div>
+                                <span style="font-family: monospace; font-size: 0.8rem; font-weight: 700; color: var(--accent-gold); background: rgba(223, 178, 96, 0.1); border: 1px solid rgba(223, 178, 96, 0.2); padding: 2px 6px; border-radius: 4px;">${turnIndex}</span>
+                            </div>
+                            <div class="spoken-wordings">${line.txt}</div>
+                        </div>
+                    `;
+                });
+
+                html += `</div>`;
+            });
+
+            document.getElementById('notesContent').innerHTML = html;
             applyTextSize();
         }
 
         function goToSlide(slideIdx) {
             loadSlideNotes(slideIdx);
-            // Scroll to top of notes
+            document.getElementById('slideNotesPanel').scrollTop = 0;
+        }
+
+        function goToAllSlides() {
+            loadAllSlidesNotes();
             document.getElementById('slideNotesPanel').scrollTop = 0;
         }
 
@@ -866,7 +990,11 @@
                 }
             });
 
-            loadSlideNotes(activeSlideIdx);
+            if (activeSlideIdx === -1) {
+                loadAllSlidesNotes();
+            } else {
+                loadSlideNotes(activeSlideIdx);
+            }
         }
 
         function adjustTextSize(amount) {
@@ -908,8 +1036,6 @@
             timerDisplay.textContent = displayStr;
 
             // Handle timer alerts
-            // Target time: 12 minutes (720 seconds)
-            // Warning time: 10 minutes (600 seconds)
             if (timerSeconds >= 720) {
                 timerDisplay.className = "timer-time warning-red";
             } else if (timerSeconds >= 600) {
@@ -921,12 +1047,10 @@
 
         timerToggle.addEventListener('click', () => {
             if (timerInterval) {
-                // Pause timer
                 clearInterval(timerInterval);
                 timerInterval = null;
                 timerToggle.textContent = 'Start';
             } else {
-                // Start timer
                 timerInterval = setInterval(() => {
                     timerSeconds++;
                     updateTimerDisplay();
@@ -946,18 +1070,22 @@
         // Keyboard navigation matching indices
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight') {
-                if (activeSlideIdx < slideNotes.length - 1) {
+                if (activeSlideIdx === -1) {
+                    goToSlide(0);
+                } else if (activeSlideIdx < slideNotes.length - 1) {
                     goToSlide(activeSlideIdx + 1);
                 }
             } else if (e.key === 'ArrowLeft') {
                 if (activeSlideIdx > 0) {
                     goToSlide(activeSlideIdx - 1);
+                } else if (activeSlideIdx === 0) {
+                    goToAllSlides();
                 }
             }
         });
 
-        // Initialize First Slide Notes
-        loadSlideNotes(0);
+        // Initialize First Slide Notes (ALL SLIDES)
+        goToAllSlides();
     </script>
 </body>
 </html>
