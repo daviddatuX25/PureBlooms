@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PureBlooms — OM Final Presentation Slides</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0c1210;
+            --card-bg: rgba(18, 30, 26, 0.7);
+            --card-border: rgba(223, 178, 96, 0.2);
+            --card-border-active: rgba(223, 178, 96, 0.6);
+            --text-primary: #e4f2ed;
+            --text-secondary: #9cb0a8;
+            --accent-gold: #dfb260;
+            --accent-rose: #ff7e9b;
+            --accent-green: #3cd070;
+            --glass-blur: 12px;
+            --font-header: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(223, 178, 96, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 126, 155, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(60, 208, 112, 0.02) 0%, transparent 50%);
+        }
+
+        /* Top Progress Bar */
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 16.6%;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-rose));
+            transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* Header Area */
+        header {
+            padding: 2.5rem 4rem 1rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .logo-text {
+            font-family: var(--font-header);
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #ffffff 50%, var(--text-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-tag {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            font-weight: 600;
+            border: 1px solid rgba(223, 178, 96, 0.3);
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: rgba(223, 178, 96, 0.05);
+        }
+
+        .subject-tag {
+            font-family: var(--font-header);
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        /* Main Presentation Canvas */
+        .presentation-canvas {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 1rem 4rem;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            max-width: 1200px;
+            height: 80%;
+            max-height: 600px;
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+            pointer-events: none;
+            transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: all;
+            z-index: 5;
+        }
+
+        /* Slide Structures */
+        .glass-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 3.5rem;
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: border 0.5s ease;
+            position: relative;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        /* Typography & Content Layouts */
+        .slide-title {
+            font-family: var(--font-header);
+            font-size: 3.2rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 30%, var(--accent-rose) 80%, var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .slide-subtitle {
+            font-family: var(--font-header);
+            font-size: 1.4rem;
+            color: var(--accent-gold);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .slide-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            height: 100%;
+        }
+
+        .slide-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide-right {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Slide-Specific UI Widgets */
+        /* Slide 1: Welcome & Org Chart */
+        .org-chart-graphic {
+            background: rgba(10, 20, 16, 0.8);
+            border: 1px solid rgba(223, 178, 96, 0.15);
+            border-radius: 12px;
+            padding: 1.5rem;
+            width: 100%;
+            font-family: monospace;
+            font-size: 0.75rem;
+            color: var(--accent-gold);
+            white-space: pre;
+            line-height: 1.3;
+            overflow-x: auto;
+            box-shadow: inset 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .team-badge-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 1.5rem;
+        }
+
+        .team-badge {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .team-badge .role-tag {
+            font-size: 0.7rem;
+            color: var(--accent-gold);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .team-badge .names {
+            font-size: 0.8rem;
+            margin-top: 4px;
+            color: var(--text-primary);
+        }
+
+        /* Slide 2: Problem Statement */
+        .problem-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .problem-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            background: rgba(255, 126, 155, 0.03);
+            border-left: 3px solid var(--accent-rose);
+            padding: 12px 18px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .problem-icon {
+            font-size: 1.4rem;
+            color: var(--accent-rose);
+            margin-top: 2px;
+        }
+
+        .problem-text h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .problem-text p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .problem-illustration {
+            width: 100%;
+            height: 250px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, rgba(20, 10, 12, 0.8), rgba(40, 20, 25, 0.6));
+            border: 1px solid rgba(255, 126, 155, 0.2);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Slide 3: Customer Journey Flow */
+        .journey-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            width: 100%;
+        }
+
+        .journey-step {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 12px 20px;
+            transition: all 0.3s ease;
+        }
+
+        .journey-step.active-step {
+            background: rgba(60, 208, 112, 0.05);
+            border-color: rgba(60, 208, 112, 0.3);
+            transform: translateX(10px);
+        }
+
+        .step-num {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .journey-step.active-step .step-num {
+            background: var(--accent-green);
+            color: var(--bg-color);
+        }
+
+        .step-details h4 {
+            font-size: 1rem;
+            color: #ffffff;
+            margin-bottom: 2px;
+        }
+
+        .step-details p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Slide 4: Operations Dashboard */
+        .dashboard-mockup {
+            width: 100%;
+            background: #0f1815;
+            border: 1px solid rgba(223, 178, 96, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .mock-header {
+            background: rgba(223, 178, 96, 0.05);
+            padding: 8px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(223, 178, 96, 0.1);
+        }
+
+        .mock-title {
+            font-size: 0.75rem;
+            color: var(--accent-gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .mock-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .mock-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .mock-body {
+            padding: 16px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .mock-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .mock-card-label {
+            font-size: 0.65rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+
+        .mock-card-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-top: 4px;
+        }
+
+        .mock-card-value.alert {
+            color: var(--accent-rose);
+        }
+
+        .mock-chart {
+            grid-column: span 3;
+            height: 80px;
+            background: rgba(223, 178, 96, 0.02);
+            border: 1px dashed rgba(223, 178, 96, 0.1);
+            border-radius: 6px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+
+        /* Slide 5: Technical Details */
+        .tech-pill-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .tech-pill {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .tech-icon {
+            font-size: 1.5rem;
+        }
+
+        .tech-desc h5 {
+            font-size: 0.95rem;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .tech-desc p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* Slide 6: OM Core Functions */
+        .om-matrix {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .om-matrix th, .om-matrix td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .om-matrix th {
+            font-family: var(--font-header);
+            font-size: 1rem;
+            color: var(--accent-gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: rgba(223, 178, 96, 0.03);
+        }
+
+        .om-matrix td {
+            font-size: 0.9rem;
+        }
+
+        .om-matrix tr:last-child td {
+            border-bottom: none;
+        }
+
+        .om-func-tag {
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        /* Footer Area */
+        footer {
+            padding: 1rem 4rem 2.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: var(--accent-gold);
+            color: var(--bg-color);
+            border-color: var(--accent-gold);
+            transform: translateY(-2px);
+        }
+
+        .slide-counter {
+            font-family: var(--font-header);
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .speaker-badge-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 8px 18px;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .speaker-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .speaker-names {
+            font-family: var(--font-header);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent-rose);
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        /* Utility classes */
+        .highlight-gold { color: var(--accent-gold); }
+        .highlight-rose { color: var(--accent-rose); }
+        .highlight-green { color: var(--accent-green); }
+
+        /* Keyboard help label */
+        .keyboard-hint {
+            position: fixed;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.2);
+            pointer-events: none;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo-area">
+            <span class="logo-icon">🌸</span>
+            <span class="logo-text">PureBlooms</span>
+            <span class="logo-tag">OM CASE STUDY</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 20px;">
+            <div class="subject-tag">Organizational Management Final Presentation</div>
+            <a href="index.html" style="color: var(--accent-gold); text-decoration: none; font-size: 0.85rem; border: 1px solid rgba(223, 178, 96, 0.3); padding: 5px 12px; border-radius: 8px; background: rgba(223, 178, 96, 0.05); font-weight: 500; font-family: var(--font-header); transition: all 0.2s ease;" onmouseover="this.style.background='var(--accent-gold)'; this.style.color='#0c1210'" onmouseout="this.style.background='rgba(223, 178, 96, 0.05)'; this.style.color='var(--accent-gold)'">Back to Hub</a>
+        </div>
+    </header>
+
+    <!-- Presentation Canvas -->
+    <main class="presentation-canvas">
+
+        <!-- Slide 1: Welcome & Setup -->
+        <div class="slide active" data-slide="1" data-speakers="P1 & P2" data-speaker-names="David & Ruth Joy">
+            <div class="glass-card">
+                <div class="slide-grid">
+                    <div class="slide-left">
+                        <span class="slide-subtitle">Welcome & Introduction</span>
+                        <h2 class="slide-title">PureBlooms: E-Commerce as an OM Case Study</h2>
+                        <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 2rem; font-size: 1.05rem;">
+                            An IT project evaluated through the lens of Organizational Management. Stepping into stakeholder roles to analyze core operations, logistics control, and system architecture.
+                        </p>
+                        <div class="team-badge-grid">
+                            <div class="team-badge">
+                                <div class="role-tag">Narrators</div>
+                                <div class="names">David & Ruth Joy</div>
+                            </div>
+                            <div class="team-badge">
+                                <div class="role-tag">Customer</div>
+                                <div class="names">Aaron & Ydel</div>
+                            </div>
+                            <div class="team-badge">
+                                <div class="role-tag">Seller</div>
+                                <div class="names">John & Von</div>
+                            </div>
+                            <div class="team-badge">
+                                <div class="role-tag">Developer</div>
+                                <div class="names">Brix & Novel</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide-right">
+                        <div class="org-chart-graphic">
+               PureBlooms Organization
+                     │
+     ┌───────────────┼───────────────┐
+     │               │               │
+┌────┴────┐     ┌────┴────┐     ┌────┴────┐
+│ Seller  │     │Customer │     │Developer│
+│ (Admin) │     │ (Buyer) │     │ (Tech)  │
+└─────────┘     └─────────┘     └─────────┘
+  P5 & P6         P3 & P4         P7 & P8
+
+            ┌─────────────────┐
+            │ Narrators / PM  │
+            │     P1 & P2     │
+            └─────────────────┘</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: The Core Problem -->
+        <div class="slide" data-slide="2" data-speakers="P3 & P1" data-speaker-names="Aaron Jake & David">
+            <div class="glass-card">
+                <div class="slide-grid">
+                    <div class="slide-left">
+                        <span class="slide-subtitle">The Organizational Gap</span>
+                        <h2 class="slide-title">The Challenge of Unorganized Florists</h2>
+                        <ul class="problem-list">
+                            <li class="problem-item">
+                                <span class="problem-icon">❌</span>
+                                <div class="problem-text">
+                                    <h4>Fulfillment Blindspots</h4>
+                                    <p>Manual orders taken in social media DMs lead to missed details, lost queries, and delayed response times.</p>
+                                </div>
+                            </li>
+                            <li class="problem-item">
+                                <span class="problem-icon">❌</span>
+                                <div class="problem-text">
+                                    <h4>Zero Inventory Control</h4>
+                                    <p>Inability to track stock in real time results in selling out-of-stock items, hurting customer goodwill.</p>
+                                </div>
+                            </li>
+                            <li class="problem-item">
+                                <span class="problem-icon">❌</span>
+                                <div class="problem-text">
+                                    <h4>Absent Financial Clarity</h4>
+                                    <p>Relying on physical ledgers or memory for daily earnings blocks analytics and forecasting.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="slide-right">
+                        <div class="problem-illustration">
+                            <span style="font-size: 3.5rem;">📉</span>
+                            <div style="text-align: center;">
+                                <h4 style="color: var(--accent-rose); font-family: var(--font-header); font-size: 1.4rem;">Unstructured Processes</h4>
+                                <p style="font-size: 0.85rem; color: var(--text-secondary); max-width: 250px; margin-top: 5px;">No Planning. No Organizing. Reactive Operations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Customer Experience -->
+        <div class="slide" data-slide="3" data-speakers="P3 & P4" data-speaker-names="Aaron Jake & Ydel Letice">
+            <div class="glass-card">
+                <div class="slide-grid">
+                    <div class="slide-left">
+                        <span class="slide-subtitle">Storefront & Logistics</span>
+                        <h2 class="slide-title">Seamless Customer Journey</h2>
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.95rem;">
+                            PureBlooms creates a high-trust customer journey designed to reduce friction and eliminate communication gaps.
+                        </p>
+                        <div class="journey-flow">
+                            <div class="journey-step active-step">
+                                <div class="step-num">1</div>
+                                <div class="step-details">
+                                    <h4>Intuitive Browse & Cart</h4>
+                                    <p>Clean grid layouts, easy filtering, and direct 'Buy Now' routes.</p>
+                                </div>
+                            </div>
+                            <div class="journey-step">
+                                <div class="step-num">2</div>
+                                <div class="step-details">
+                                    <h4>Customizable Add-Ons & Checkout</h4>
+                                    <p>Select wrappers, greetings, and pay securely via COD or GCash.</p>
+                                </div>
+                            </div>
+                            <div class="journey-step">
+                                <div class="step-num">3</div>
+                                <div class="step-details">
+                                    <h4>Live Order Tracking Timeline</h4>
+                                    <p>Track status updates dynamically (Pending → Shipped → Delivered).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide-right">
+                        <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 2.5rem; border-radius: 15px; text-align: center; width: 100%;">
+                            <span style="font-size: 4rem; display: block; margin-bottom: 1rem;">🛒</span>
+                            <h4 style="font-family: var(--font-header); font-size: 1.5rem; margin-bottom: 8px;">Direct Buying Pipeline</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary);">Minimal cognitive load for the buyer. Clear confirmation email automatically delivered.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Seller Experience -->
+        <div class="slide" data-slide="4" data-speakers="P5 & P6" data-speaker-names="John Paul & Von Eiron">
+            <div class="glass-card">
+                <div class="slide-grid">
+                    <div class="slide-left">
+                        <span class="slide-subtitle">Operational Control Panel</span>
+                        <h2 class="slide-title">Managing Operations Through Data</h2>
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.95rem;">
+                            The Admin Dashboard acts as the central command room. Business choices are driven by data dashboards and pipeline trackers.
+                        </p>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div style="display: flex; gap: 15px; align-items: center;">
+                                <span style="font-size: 1.5rem; color: var(--accent-gold);">📊</span>
+                                <div>
+                                    <h4 style="font-size: 1rem; color: #ffffff;">Financial Intelligence</h4>
+                                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Sales reports and monthly revenue trends generated automatically.</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 15px; align-items: center;">
+                                <span style="font-size: 1.5rem; color: var(--accent-rose);">📦</span>
+                                <div>
+                                    <h4 style="font-size: 1rem; color: #ffffff;">Inventory Alerts</h4>
+                                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Low stock thresholds alert when replenishment is necessary.</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 15px; align-items: center;">
+                                <span style="font-size: 1.5rem; color: var(--accent-green);">👥</span>
+                                <div>
+                                    <h4 style="font-size: 1rem; color: #ffffff;">CRM Capabilities</h4>
+                                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Track buyer frequency and purchase histories to improve retention.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide-right">
+                        <div class="dashboard-mockup">
+                            <div class="mock-header">
+                                <span class="mock-title">PureBlooms Admin</span>
+                                <div class="mock-dots">
+                                    <div class="mock-dot"></div>
+                                    <div class="mock-dot"></div>
+                                    <div class="mock-dot"></div>
+                                </div>
+                            </div>
+                            <div class="mock-body">
+                                <div class="mock-card">
+                                    <div class="mock-card-label">Revenue</div>
+                                    <div class="mock-card-value" style="color: var(--accent-green);">₱24,500</div>
+                                </div>
+                                <div class="mock-card">
+                                    <div class="mock-card-label">Pending</div>
+                                    <div class="mock-card-value">7 Orders</div>
+                                </div>
+                                <div class="mock-card">
+                                    <div class="mock-card-label">Low Stock</div>
+                                    <div class="mock-card-value alert">3 Items</div>
+                                </div>
+                                <div class="mock-chart">
+                                    📈 Sales Graph: Monthly Trend
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Tech Perspective -->
+        <div class="slide" data-slide="5" data-speakers="P7 & P8" data-speaker-names="Brix & Novel">
+            <div class="glass-card">
+                <div class="slide-grid">
+                    <div class="slide-left">
+                        <span class="slide-subtitle">Technical Excellence</span>
+                        <h2 class="slide-title">Building a Production-Ready Core</h2>
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.95rem;">
+                            The architecture was designed from day one to achieve high reliability, performance caching, and data integrity.
+                        </p>
+                        <div class="tech-pill-grid">
+                            <div class="tech-pill">
+                                <span class="tech-icon">⚡</span>
+                                <div class="tech-desc">
+                                    <h5>Laravel & Docker</h5>
+                                    <p>Robust MVC design. Quick containerized deployments.</p>
+                                </div>
+                            </div>
+                            <div class="tech-pill">
+                                <span class="tech-icon">🛡️</span>
+                                <div class="tech-desc">
+                                    <h5>DB Transactions</h5>
+                                    <p>Rolls back database writes on checkout errors.</p>
+                                </div>
+                            </div>
+                            <div class="tech-pill">
+                                <span class="tech-icon">🔑</span>
+                                <div class="tech-desc">
+                                    <h5>Server Validation</h5>
+                                    <p>Prevents client-side price tampering.</p>
+                                </div>
+                            </div>
+                            <div class="tech-pill">
+                                <span class="tech-icon">🔄</span>
+                                <div class="tech-desc">
+                                    <h5>Double-Click Guard</h5>
+                                    <p>Blocks double payments via session-tokens.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide-right">
+                        <div style="background: rgba(255,255,255,0.01); border: 1px dashed rgba(255,255,255,0.1); border-radius: 12px; padding: 2rem; width: 100%;">
+                            <h4 style="color: var(--accent-gold); font-family: var(--font-header); font-size: 1.2rem; margin-bottom: 12px;">Non-Functional Pillars</h4>
+                            <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem; color: var(--text-secondary);">
+                                <div style="display: flex; justify-content: space-between;"><span>Data Security:</span> <span style="color: #ffffff;">Throttled Auth</span></div>
+                                <div style="display: flex; justify-content: space-between;"><span>Performance:</span> <span style="color: #ffffff;">Settings Cache</span></div>
+                                <div style="display: flex; justify-content: space-between;"><span>Payment:</span> <span style="color: #ffffff;">GCash & COD</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: OM Closing -->
+        <div class="slide" data-slide="6" data-speakers="P2 & P1" data-speaker-names="Ruth Joy & David">
+            <div class="glass-card">
+                <span class="slide-subtitle">Theoretical Synthesis</span>
+                <h2 class="slide-title">OM Core Integration Summary</h2>
+                <div style="margin-top: 1rem; width: 100%;">
+                    <table class="om-matrix">
+                        <thead>
+                            <tr>
+                                <th>OM Management Core</th>
+                                <th>PureBlooms System Implementation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="om-func-tag"><span class="highlight-gold">Planning</span></td>
+                                <td>Settings Module — Shop policies, currency, payment gates, and maintenance mode toggles.</td>
+                            </tr>
+                            <tr>
+                                <td class="om-func-tag"><span class="highlight-rose">Organizing</span></td>
+                                <td>Access Hierarchy — Role-Based Access Control (RBAC) separating customers and admins.</td>
+                            </tr>
+                            <tr>
+                                <td class="om-func-tag"><span class="highlight-green">Leading</span></td>
+                                <td>Command Center — Real-time analytics, pending status indicators, and operational dashboards.</td>
+                            </tr>
+                            <tr>
+                                <td class="om-func-tag"><span>Controlling</span></td>
+                                <td>Quality Checks — Live inventory monitors, sales sheets, and transaction logs.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div style="margin-top: 1.5rem; text-align: center; color: var(--text-secondary); font-size: 0.95rem;">
+                    "Structuring operations, managing relationships, and scaling with engineering discipline."
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <!-- Nav Controls -->
+        <div class="nav-controls">
+            <button class="nav-btn" id="prevBtn" aria-label="Previous Slide">←</button>
+            <span class="slide-counter"><span id="currentSlideNum">1</span> / 6</span>
+            <button class="nav-btn" id="nextBtn" aria-label="Next Slide">→</button>
+        </div>
+
+        <!-- Speaker Badge -->
+        <div class="speaker-badge-container">
+            <span class="speaker-label">Active Speaker:</span>
+            <span class="speaker-names" id="activeSpeaker">P1 & P2 (David & Ruth Joy)</span>
+        </div>
+    </footer>
+
+    <span class="keyboard-hint">Press [Space] or [→] to advance, [←] to go back</span>
+
+    <!-- Navigation Logic -->
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const currentSlideNum = document.getElementById('currentSlideNum');
+        const activeSpeaker = document.getElementById('activeSpeaker');
+        const progressBar = document.getElementById('progressBar');
+        
+        let currentSlideIdx = 0;
+        const totalSlides = slides.length;
+
+        function updateSlides() {
+            // Update active class
+            slides.forEach((slide, idx) => {
+                if (idx === currentSlideIdx) {
+                    slide.classList.add('active');
+                    // Update metadata
+                    const speakers = slide.getAttribute('data-speakers');
+                    const names = slide.getAttribute('data-speaker-names');
+                    currentSlideNum.textContent = idx + 1;
+                    activeSpeaker.textContent = `${speakers} (${names})`;
+                    // Update progress bar
+                    progressBar.style.width = `${((idx + 1) / totalSlides) * 100}%`;
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+
+            // Adjust active step animation on Slide 3
+            if (currentSlideIdx === 2) {
+                animateCustomerSteps();
+            }
+        }
+
+        function nextSlide() {
+            if (currentSlideIdx < totalSlides - 1) {
+                currentSlideIdx++;
+                updateSlides();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlideIdx > 0) {
+                currentSlideIdx--;
+                updateSlides();
+            }
+        }
+
+        // Animation for Slide 3 customer steps
+        let stepInterval;
+        function animateCustomerSteps() {
+            clearInterval(stepInterval);
+            const steps = document.querySelectorAll('.journey-step');
+            let activeStepIdx = 0;
+            
+            stepInterval = setInterval(() => {
+                steps.forEach((step, idx) => {
+                    if (idx === activeStepIdx) {
+                        step.classList.add('active-step');
+                    } else {
+                        step.classList.remove('active-step');
+                    }
+                });
+                activeStepIdx = (activeStepIdx + 1) % steps.length;
+            }, 3000);
+        }
+
+        // Event Listeners
+        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextSlide);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+                e.preventDefault();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+                e.preventDefault();
+            }
+        });
+
+        // Initialize slide indicators
+        updateSlides();
+    </script>
+</body>
+</html>

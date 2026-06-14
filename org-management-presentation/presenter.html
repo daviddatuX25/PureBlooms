@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PureBlooms — Presenter Notes & Script Dashboard</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #141b2d;
+            --sidebar-bg: #0f1424;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --accent-gold: #dfb260;
+            --accent-rose: #ff7e9b;
+            --accent-blue: #38bdf8;
+            --accent-green: #34d399;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --highlight-bg: rgba(223, 178, 96, 0.15);
+            --highlight-border: var(--accent-gold);
+            --font-header: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-size-base: 1rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Top Header & Dashboard Controls */
+        header {
+            background-color: var(--sidebar-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .header-title-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .title-main {
+            font-family: var(--font-header);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .badge-presenter {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-blue);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .timer-widget {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 6px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+        }
+
+        .timer-time {
+            font-family: monospace;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            min-width: 70px;
+            text-align: center;
+        }
+
+        .timer-time.warning-amber {
+            color: var(--accent-gold);
+            text-shadow: 0 0 10px rgba(223, 178, 96, 0.3);
+        }
+
+        .timer-time.warning-red {
+            color: var(--accent-rose);
+            text-shadow: 0 0 10px rgba(255, 126, 155, 0.3);
+            animation: pulse 1s infinite alternate;
+        }
+
+        .timer-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: none;
+            color: #ffffff;
+            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .timer-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Dashboard Body Layout */
+        .dashboard-body {
+            flex-grow: 1;
+            display: flex;
+            overflow: hidden;
+        }
+
+        /* Left Sidebar - Slide Index */
+        .sidebar {
+            width: 320px;
+            background-color: var(--sidebar-bg);
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            flex-shrink: 0;
+        }
+
+        .sidebar-header {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            font-family: var(--font-header);
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+
+        .slide-list-item {
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .slide-list-item:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .slide-list-item.active {
+            background: rgba(56, 189, 248, 0.05);
+            border-left: 4px solid var(--accent-blue);
+        }
+
+        .slide-list-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .slide-num-tag {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .slide-duration {
+            font-size: 0.75rem;
+            color: var(--accent-gold);
+            font-weight: 500;
+        }
+
+        .slide-list-title {
+            font-family: var(--font-header);
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .slide-speakers-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--text-secondary);
+        }
+
+        /* Central Notes Dashboard */
+        .content-area {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background-color: var(--bg-color);
+        }
+
+        /* Toolbar Controls inside Content Area */
+        .toolbar {
+            background: rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .speaker-filters {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .filter-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-right: 5px;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--accent-gold);
+            color: var(--bg-color);
+            border-color: var(--accent-gold);
+        }
+
+        .text-resizers {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .resize-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: #ffffff;
+            width: 30px;
+            height: 30px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+        }
+
+        .view-toggler {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: var(--accent-blue);
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        /* Script Notes Container */
+        .notes-scroller {
+            flex-grow: 1;
+            padding: 2.5rem;
+            overflow-y: auto;
+        }
+
+        .slide-notes-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .slide-meta-header {
+            margin-bottom: 2rem;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 1.5rem;
+        }
+
+        .notes-slide-title {
+            font-family: var(--font-header);
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .cue-panel {
+            background: rgba(223, 178, 96, 0.06);
+            border-left: 4px solid var(--accent-gold);
+            border-radius: 0 10px 10px 0;
+            padding: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cue-header {
+            font-family: var(--font-header);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .cue-content {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .script-lines {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+        }
+
+        .script-block {
+            transition: all 0.3s ease;
+        }
+
+        /* Focus mode classes */
+        .script-block.faded {
+            opacity: 0.25;
+            filter: blur(0.5px);
+        }
+
+        .script-block.highlighted {
+            background: var(--highlight-bg);
+            border: 1px solid var(--highlight-border);
+            border-radius: 10px;
+            padding: 1.2rem;
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .speaker-badge-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .speaker-tag {
+            font-family: var(--font-header);
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 3px 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .tag-p1 { background: #dfb260; color: #000000; }
+        .tag-p2 { background: #f97316; color: #ffffff; }
+        .tag-p3 { background: #ec4899; color: #ffffff; }
+        .tag-p4 { background: #a855f7; color: #ffffff; }
+        .tag-p5 { background: #3b82f6; color: #ffffff; }
+        .tag-p6 { background: #10b981; color: #ffffff; }
+        .tag-p7 { background: #06b6d4; color: #ffffff; }
+        .tag-p8 { background: #64748b; color: #ffffff; }
+
+        .speaker-name {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .spoken-wordings {
+            font-size: var(--font-size-base);
+            line-height: 1.6;
+            color: #ffffff;
+            font-weight: 400;
+        }
+
+        /* Full continuous script view */
+        .full-script-panel {
+            display: none;
+            flex-grow: 1;
+            padding: 2.5rem;
+            overflow-y: auto;
+            background: #090d16;
+        }
+
+        .full-script-content {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .full-script-content h1, .full-script-content h2, .full-script-content h3 {
+            font-family: var(--font-header);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .full-script-content h2 {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        .full-script-content blockquote {
+            background: rgba(255,255,255,0.02);
+            border-left: 3px solid var(--accent-gold);
+            padding: 10px 20px;
+            margin: 1rem 0;
+            color: var(--text-primary);
+            font-style: italic;
+        }
+
+        .full-script-content ul, .full-script-content ol {
+            margin-left: 20px;
+            margin-bottom: 1rem;
+        }
+
+        .full-script-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .full-script-content th, .full-script-content td {
+            border: 1px solid var(--border-color);
+            padding: 8px 12px;
+            text-align: left;
+        }
+
+        .full-script-content th {
+            background: rgba(255,255,255,0.05);
+        }
+
+        /* Keyframe animations */
+        @keyframes pulse {
+            0% { opacity: 0.9; }
+            100% { opacity: 1; transform: scale(1.02); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Header -->
+    <header>
+        <div class="header-title-area">
+            <span class="title-main">🌸 PureBlooms</span>
+            <span class="badge-presenter">Presenter Cockpit</span>
+            <a href="index.html" class="timer-btn" style="text-decoration: none; padding: 6px 12px; font-weight: 500; font-family: var(--font-header);">Back to Hub</a>
+            <a href="slides.html" target="_blank" class="timer-btn" style="text-decoration: none; padding: 6px 12px; font-weight: 500; font-family: var(--font-header); background: rgba(56, 189, 248, 0.15); color: var(--accent-blue); border: 1px solid rgba(56, 189, 248, 0.3);">Open Slides ↗</a>
+        </div>
+
+        <!-- Timer Widget -->
+        <div class="timer-widget">
+            <span class="timer-btn" id="timerReset">Reset</span>
+            <span class="timer-time" id="timerDisplay">00:00</span>
+            <span class="timer-btn" id="timerToggle">Start</span>
+        </div>
+    </header>
+
+    <!-- Main Dashboard -->
+    <div class="dashboard-body">
+
+        <!-- Sidebar Slide List -->
+        <div class="sidebar">
+            <div class="sidebar-header">Slide Navigator</div>
+            <div class="slide-list-item active" onclick="goToSlide(0)">
+                <div class="slide-list-meta">
+                    <span class="slide-num-tag">SLIDE 1</span>
+                    <span class="slide-duration">~1:30</span>
+                </div>
+                <div class="slide-list-title">Welcome & Setup</div>
+                <span class="slide-speakers-tag">P1, P2</span>
+            </div>
+            <div class="slide-list-item" onclick="goToSlide(1)">
+                <div class="slide-list-meta">
+                    <span class="slide-num-tag">SLIDE 2</span>
+                    <span class="slide-duration">~1:30</span>
+                </div>
+                <div class="slide-list-title">The Core Problem</div>
+                <span class="slide-speakers-tag">P3, P1</span>
+            </div>
+            <div class="slide-list-item" onclick="goToSlide(2)">
+                <div class="slide-list-meta">
+                    <span class="slide-num-tag">SLIDE 3</span>
+                    <span class="slide-duration">~3:00</span>
+                </div>
+                <div class="slide-list-title">Customer Journey</div>
+                <span class="slide-speakers-tag">P3, P4</span>
+            </div>
+            <div class="slide-list-item" onclick="goToSlide(3)">
+                <div class="slide-list-meta">
+                    <span class="slide-num-tag">SLIDE 4</span>
+                    <span class="slide-duration">~3:00</span>
+                </div>
+                <div class="slide-list-title">Seller Dashboard</div>
+                <span class="slide-speakers-tag">P5, P6</span>
+            </div>
+            <div class="slide-list-item" onclick="goToSlide(4)">
+                <div class="slide-list-meta">
+                    <span class="slide-num-tag">SLIDE 5</span>
+                    <span class="slide-duration">~2:30</span>
+                </div>
+                <div class="slide-list-title">Technical Details</div>
+                <span class="slide-speakers-tag">P7, P8</span>
+            </div>
+            <div class="slide-list-item" onclick="goToSlide(5)">
+                <div class="slide-list-meta">
+                    <span class="slide-num-tag">SLIDE 6</span>
+                    <span class="slide-duration">~1:30</span>
+                </div>
+                <div class="slide-list-title">OM Core Synthesis</div>
+                <span class="slide-speakers-tag">P2, P1</span>
+            </div>
+        </div>
+
+        <!-- Central Dashboard Area -->
+        <div class="content-area">
+            
+            <!-- Toolbar -->
+            <div class="toolbar">
+                <div class="speaker-filters">
+                    <span class="filter-label">My Role:</span>
+                    <button class="filter-btn active" onclick="setSpeakerFilter('ALL')">All</button>
+                    <button class="filter-btn" onclick="setSpeakerFilter('P1')">P1 (David)</button>
+                    <button class="filter-btn" onclick="setSpeakerFilter('P2')">P2 (Ruth)</button>
+                    <button class="filter-btn" onclick="setSpeakerFilter('P3')">P3 (Aaron)</button>
+                    <button class="filter-btn" onclick="setSpeakerFilter('P4')">P4 (Ydel)</button>
+                    <button class="filter-btn" onclick="setSpeakerFilter('P5')">P5 (John)</button>
+                    <button class="filter-btn" onclick="setSpeakerFilter('P6')">P6 (Von)</button>
+                    <button class="filter-btn" onclick="setSpeakerFilter('P7')">P7 (Brix)</button>
+                    <button class="filter-btn" onclick="setSpeakerFilter('P8')">P8 (Novel)</button>
+                </div>
+
+                <div style="display: flex; gap: 15px; align-items: center;">
+                    <div class="text-resizers">
+                        <button class="resize-btn" onclick="adjustTextSize(-1)">A-</button>
+                        <button class="resize-btn" onclick="adjustTextSize(1)">A+</button>
+                    </div>
+                    <button class="view-toggler" id="toggleViewBtn" onclick="toggleScriptView()">Full Script Mode</button>
+                </div>
+            </div>
+
+            <!-- Slide-by-Slide Notes Dashboard -->
+            <div class="notes-scroller" id="slideNotesPanel">
+                <div class="slide-notes-container" id="notesContent">
+                    <!-- Dynamic Notes Filled via JS -->
+                </div>
+            </div>
+
+            <!-- Full Scrollable Script Panel -->
+            <div class="full-script-panel" id="fullScriptPanel">
+                <div class="full-script-content">
+                    <h1>🌸 PureBlooms — Presentation Script</h1>
+                    <h3>Organizational Management Final Project Presentation</h3>
+                    <p>Refer to the <a href="file:///home/user/Downloads/Pure%20Blooms/org-management-presentation/Presentation%20Script.md" style="color: var(--accent-blue); text-decoration: none;">Presentation Script.md</a> file for full individual contribution details, references, and checklists.</p>
+                    
+                    <h2>ACT 0 — THE OM SETUP</h2>
+                    <p><strong>Speaker: P1 (David)</strong></p>
+                    <blockquote>"Good morning, everyone. Before we walk you through the system we've built, we want to share a quick reality about our project. In truth, PureBlooms was developed by a single developer working directly with a client. However, to portray this case study in an Organizational Management setting and demonstrate its commercial viability, we have structured our presentation a little differently today. We will be stepping into the roles of the key organizational stakeholders who interact with a system like this: the Project Managers, the Customers, the Sellers, and the Developers. This allows us to analyze how PureBlooms fits into the broader principles of Organizational Management."</blockquote>
+                    
+                    <p><strong>Speaker: P2 (Ruth Joy)</strong></p>
+                    <blockquote>"Exactly. By analyzing the system through these distinct lenses, we can map how a simple flower shop operates under the four core functions of management: Planning, Organizing, Leading, and Controlling. Our system is called PureBlooms — an e-commerce platform designed for a local flower shop. Let's start by looking at the organizational gap and the core business problem it solves. P3, take us away."</blockquote>
+
+                    <h2>ACT 1 — THE PROBLEM HOOK</h2>
+                    <p><strong>Speaker: P3 (Aaron Jake)</strong></p>
+                    <blockquote>"Picture this. You want to send flowers to someone special. You search on Facebook and find a small flower shop. You DM them. You wait. You follow up. They reply hours later, only to tell you that the bouquet you wanted is already out of stock. So you try another shop. You message them, and they send you a GCash QR code. You pay, send the screenshot, and... nothing. No confirmation, no receipt, no idea when it will arrive. You just wait, hope, and stress. This is the everyday reality of buying from a small, unorganized flower vendor. And it is completely unnecessary."</blockquote>
+
+                    <p><strong>Speaker: P1 (David)</strong></p>
+                    <blockquote>"From an organizational standpoint, this represents a major management gap. Small businesses in the gifting space often operate without any formal system. Orders are tracked in messy chat logs, inventory is guessed, and revenue is calculated from memory. The core management functions are simply absent. PureBlooms is designed to bridge this gap. It's not just a website; it is an operational control system that structures these chaotic processes. Let's show you how this looks on the customer's end."</blockquote>
+
+                    <h2>ACT 2 — THE CUSTOMER EXPERIENCE</h2>
+                    <p><strong>Speaker: P3 (Aaron Jake)</strong></p>
+                    <blockquote>"As a customer, I want a storefront I can trust. The moment I land on the PureBlooms homepage, I see featured products, categories, and a clean, responsive layout. There's no clutter, making my browsing experience seamless."</blockquote>
+                    <p><strong>Speaker: P4 (Ydel Letice)</strong></p>
+                    <blockquote>"From a design perspective, this layout minimizes what we call cognitive load. The product card displays only essential details: image, name, category, and price. This minimalist design helps guide the customer toward a decision quickly."</blockquote>
+                    <p><strong>Speaker: P3 (Aaron Jake)</strong></p>
+                    <blockquote>"I can add items to my shopping cart, or use the 'Buy Now' button to skip the cart altogether. This direct checkout path respects the customer's time."</blockquote>
+                    <p><strong>Speaker: P4 (Ydel Letice)</strong></p>
+                    <blockquote>"On the checkout page, the system offers customizable add-ons like gift wrapping or a message card. These are not hardcoded; the admin can update, price, and toggle these add-ons dynamically. This is a subtle yet powerful tool for average order value optimization."</blockquote>
+                    <p><strong>Speaker: P3 (Aaron Jake)</strong></p>
+                    <blockquote>"For payment, we support Cash on Delivery and GCash. I'll select Cash on Delivery, fill in my shipping address, and submit the order."</blockquote>
+                    <p><strong>Speaker: P4 (Ydel Letice)</strong></p>
+                    <blockquote>"Once submitted, the system generates a unique order tracking number and sends an automated confirmation email. Now, let's track our order."</blockquote>
+                    <p><strong>Speaker: P3 (Aaron Jake)</strong></p>
+                    <blockquote>"Instead of messaging a seller and waiting for replies, I can see a live status timeline: Pending, Processing, Shipped, and Delivered. The process is completely transparent."</blockquote>
+
+                    <h2>ACT 3 — THE SELLER EXPERIENCE</h2>
+                    <p><strong>Speaker: P5 (John Paul)</strong></p>
+                    <blockquote>"Now let's switch roles. As the business owner or operations manager, this dashboard is my control room. The moment I log in, I get real-time operational insights."</blockquote>
+                    <p><strong>Speaker: P6 (Von Eiron)</strong></p>
+                    <blockquote>"These metrics — Total Revenue, Orders, Pending Orders, Low Stock Alerts, and Add-on Sales — represent our KPIs (Key Performance Indicators). In Organizational Management, monitoring these values is the Controlling function. It tells us if our logistics are matching demand. A 'Low Stock Alert' tells us exactly when to replenish inventory, moving us from reactive firefighting to proactive management."</blockquote>
+                    <p><strong>Speaker: P5 (John Paul)</strong></p>
+                    <blockquote>"Here is our order pipeline. Every transaction is logged here. As the administrator, I can update the order status as it moves from Pending to Shipped, and finally to Delivered."</blockquote>
+                    <p><strong>Speaker: P6 (Von Eiron)</strong></p>
+                    <blockquote>"This pipeline acts as our digital operations flow. Next, let's look at the financial and inventory analytics under the Reports section."</blockquote>
+                    <p><strong>Speaker: P5 (John Paul)</strong></p>
+                    <blockquote>"Under Sales Reports, we can see monthly revenue trends and average order values. This integrates the Financial Management aspect of OM directly into the system, avoiding the need for messy offline bookkeeping."</blockquote>
+                    <p><strong>Speaker: P6 (Von Eiron)</strong></p>
+                    <blockquote>"The Inventory Report tracks stock levels and shows us the total monetary value of our warehouse asset. Knowing this value is crucial for balance sheets and cost control."</blockquote>
+                    <p><strong>Speaker: P5 (John Paul)</strong></p>
+                    <blockquote>"Our Customer Report functions as our CRM (Customer Relationship Management) database, listing order frequencies and helping us track buyer retention."</blockquote>
+                    <p><strong>Speaker: P6 (Von Eiron)</strong></p>
+                    <blockquote>"Lastly, the Settings page controls shop variables, payment methods, and includes a Maintenance Mode toggle to temporarily take the store offline gracefully. This represents the Planning function: defining boundaries for daily operations."</blockquote>
+
+                    <h2>ACT 4 — THE DEVELOPER PERSPECTIVE</h2>
+                    <p><strong>Speaker: P7 (Brix)</strong></p>
+                    <blockquote>"Now, let's peek under the hood. Building a system that looks good is only half the battle. Making it robust, secure, and production-ready is where engineering matters. PureBlooms is built on the Laravel framework using a clean Model-View-Controller (MVC) architecture. The frontend is powered by Blade templates and Tailwind CSS, bundled with Vite for fast load times. The entire application is containerized using Docker, ensuring that it runs reliably in any environment."</blockquote>
+                    <p><strong>Speaker: P8 (Novel)</strong></p>
+                    <blockquote>"But beyond the stack, we focused on Non-Functional Requirements to solve common real-world failure points. First, Data Integrity. The checkout process is wrapped in database transactions. If database writes fail or a connection drops mid-process, the database rolls back completely. The customer is never double-billed, and stock is never deducted incorrectly."</blockquote>
+                    <p><strong>Speaker: P7 (Brix)</strong></p>
+                    <blockquote>"Second, Security. Addon prices are validated strictly on the server-side, meaning users cannot alter prices using browser inspector tools. We also implement password throttling to block brute-force attempts, and strict Role-Based Access Control (RBAC) middleware to protect the admin panel."</blockquote>
+                    <p><strong>Speaker: P8 (Novel)</strong></p>
+                    <blockquote>"Third, Reliability and Speed. We prevent duplicate orders by generating unique cart session tokens. If a user double-clicks the purchase button, the system intercepts the duplicate request. We also cache shop settings to decrease database queries, and integrated an toggleable maintenance middleware."</blockquote>
+
+                    <h2>ACT 5 — THE OM CLOSING</h2>
+                    <p><strong>Speaker: P2 (Ruth Joy)</strong></p>
+                    <blockquote>"To bring this full circle, Organizational Management is centered around four core functions, and we have built PureBlooms around all four: 1. Planning: Managed through the Settings module, defining the parameters, payment rules, and operating states of the shop. 2. Organizing: Enforced by our Role-Based Access Control and user permission hierarchies. 3. Leading: Supported by our live KPI dashboard, which gives leadership the information they need to guide the business. 4. Controlling: Implemented through our real-time inventory alerts, order pipelines, and structured reports."</blockquote>
+                    <p><strong>Speaker: P1 (David)</strong></p>
+                    <blockquote>"We are IT students, but today we wanted to show you more than just code. We wanted to present an organization in motion — how it coordinates, how it operates, and how it controls its data. PureBlooms transforms a chaotic, unorganized flower shop into a structured business entity. Thank you, and we are now open for your questions."</blockquote>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Script Navigation & Focus Filters Logic -->
+    <script>
+        const slideNotes = [
+            {
+                title: "Welcome & Setup",
+                duration: "~1:30",
+                speakers: "P1 & P2",
+                cues: "SHOW Slide 1 (Org Chart). All 8 members stand ready. David (P1) steps forward.",
+                lines: [
+                    { spk: "P1", name: "David", txt: "Good morning, everyone. Before we walk you through the system we've built, we want to share a quick reality about our project." },
+                    { spk: "P1", name: "David", txt: "In truth, PureBlooms was developed by a single developer working directly with a client. However, to portray this case study in an Organizational Management setting and demonstrate its commercial viability, we have structured our presentation a little differently today." },
+                    { spk: "P1", name: "David", txt: "We will be stepping into the roles of the key organizational stakeholders who interact with a system like this: the Project Managers, the Customers, the Sellers, and the Developers. This allows us to analyze how PureBlooms fits into the broader principles of Organizational Management." },
+                    { spk: "P2", name: "Ruth Joy", txt: "Exactly. By analyzing the system through these distinct lenses, we can map how a simple flower shop operates under the four core functions of management: Planning, Organizing, Leading, and Controlling." },
+                    { spk: "P2", name: "Ruth Joy", txt: "Our system is called PureBlooms — an e-commerce platform designed for a local flower shop. Let's start by looking at the organizational gap and the core business problem it solves. P3, take us away." }
+                ]
+            },
+            {
+                title: "The Core Problem",
+                duration: "~1:30",
+                speakers: "P3 & P1",
+                cues: "SHOW Slide 2 (Problem Hook). Focus on the customer frustration. P3 (Aaron Jake) narrates.",
+                lines: [
+                    { spk: "P3", name: "Aaron Jake", txt: "Picture this. You want to send flowers to someone special. You search on Facebook and find a small flower shop. You DM them. You wait. You follow up. They reply hours later, only to tell you that the bouquet you wanted is already out of stock." },
+                    { spk: "P3", name: "Aaron Jake", txt: "So you try another shop. You message them, and they send you a GCash QR code. You pay, send the screenshot, and... nothing. No confirmation, no receipt, no idea when it will arrive. You just wait, hope, and stress." },
+                    { spk: "P3", name: "Aaron Jake", txt: "This is the everyday reality of buying from a small, unorganized flower vendor. And it is completely unnecessary." },
+                    { spk: "P1", name: "David", txt: "From an organizational standpoint, this represents a major management gap. Small businesses in the gifting space often operate without any formal system. Orders are tracked in messy chat logs, inventory is guessed, and revenue is calculated from memory. The core management functions are simply absent." },
+                    { spk: "P1", name: "David", txt: "PureBlooms is designed to bridge this gap. It's not just a website; it is an operational control system that structures these chaotic processes. Let's show you how this looks on the customer's end." }
+                ]
+            },
+            {
+                title: "Customer Journey Flow",
+                duration: "~3:00",
+                speakers: "P3 & P4",
+                cues: "LIVE DEMO CUE: Load PureBlooms Storefront. P3 handles the browser navigation, P4 does the UX commentary.",
+                lines: [
+                    { spk: "P3", name: "Aaron Jake", txt: "As a customer, I want a storefront I can trust. The moment I land on the PureBlooms homepage, I see featured products, categories, and a clean, responsive layout. There's no clutter, making my browsing experience seamless. [DEMO CUE: Scroll grid slowly]" },
+                    { spk: "P4", name: "Ydel Letice", txt: "From a design perspective, this layout minimizes what we call cognitive load. The product card displays only essential details: image, name, category, and price. This minimalist design helps guide the customer toward a decision quickly. [DEMO CUE: Click product page]" },
+                    { spk: "P3", name: "Aaron Jake", txt: "I can add items to my shopping cart, or use the 'Buy Now' button to skip the cart altogether. This direct checkout path respects the customer's time. [DEMO CUE: Click Buy Now]" },
+                    { spk: "P4", name: "Ydel Letice", txt: "On the checkout page, the system offers customizable add-ons like gift wrapping or a message card. These are not hardcoded; the admin can update, price, and toggle these add-ons dynamically. This is a subtle yet powerful tool for average order value optimization. [DEMO CUE: Select an add-on]" },
+                    { spk: "P3", name: "Aaron Jake", txt: "For payment, we support Cash on Delivery and GCash. I'll select Cash on Delivery, fill in my shipping address, and submit the order. [DEMO CUE: Submit Order]" },
+                    { spk: "P4", name: "Ydel Letice", txt: "Once submitted, the system generates a unique order tracking number and sends an automated confirmation email. Now, let's track our order. [DEMO CUE: Navigate to Tracking]" },
+                    { spk: "P3", name: "Aaron Jake", txt: "Instead of messaging a seller and waiting for replies, I can see a live status timeline: Pending, Processing, Shipped, and Delivered. The process is completely transparent." }
+                ]
+            },
+            {
+                title: "Seller Dashboard & Reports",
+                duration: "~3:00",
+                speakers: "P5 & P6",
+                cues: "LIVE DEMO CUE: Switch browser to Admin Dashboard tab. P5 walks the metrics, P6 ties in OM context.",
+                lines: [
+                    { spk: "P5", name: "John Paul", txt: "Now let's switch roles. As the business owner or operations manager, this dashboard is my control room. The moment I log in, I get real-time operational insights. [DEMO CUE: Point to KPIs]" },
+                    { spk: "P6", name: "Von Eiron", txt: "These metrics — Total Revenue, Orders, Pending Orders, Low Stock Alerts, and Add-on Sales — represent our KPIs. In Organizational Management, monitoring these values is the Controlling function. It tells us if our logistics are matching demand." },
+                    { spk: "P6", name: "Von Eiron", txt: "A 'Low Stock Alert' tells us exactly when to replenish inventory, moving us from reactive firefighting to proactive management. [DEMO CUE: Click Order Pipeline]" },
+                    { spk: "P5", name: "John Paul", txt: "Here is our order pipeline. Every transaction is logged here. As the administrator, I can update the order status as it moves from Pending to Shipped, and finally to Delivered. [DEMO CUE: Update status]" },
+                    { spk: "P6", name: "Von Eiron", txt: "This pipeline acts as our digital operations flow. Next, let's look at the financial and inventory analytics under the Reports section. [DEMO CUE: Go to Sales Reports]" },
+                    { spk: "P5", name: "John Paul", txt: "Under Sales Reports, we can see monthly revenue trends and average order values. This integrates the Financial Management aspect of OM directly into the system, avoiding the need for messy offline bookkeeping. [DEMO CUE: Go to Inventory Report]" },
+                    { spk: "P6", name: "Von Eiron", txt: "The Inventory Report tracks stock levels and shows us the total monetary value of our warehouse asset. Knowing this value is crucial for balance sheets and cost control. [DEMO CUE: Go to Customers Report]" },
+                    { spk: "P5", name: "John Paul", txt: "Our Customer Report functions as our CRM database, listing order frequencies and helping us track buyer retention. [DEMO CUE: Go to Settings]" },
+                    { spk: "P6", name: "Von Eiron", txt: "Lastly, the Settings page controls shop variables, payment methods, and includes a Maintenance Mode toggle to temporarily take the store offline gracefully. This represents the Planning function: defining boundaries for daily operations." }
+                ]
+            },
+            {
+                title: "Technical Architecture",
+                duration: "~2:30",
+                speakers: "P7 & P8",
+                cues: "SHOW Slide 5 (Tech stack, NFRs). Focus on system robustness and engineering decisions. P7 and P8 present.",
+                lines: [
+                    { spk: "P7", name: "Brix", txt: "Now, let's peek under the hood. Building a system that looks good is only half the battle. Making it robust, secure, and production-ready is where engineering matters." },
+                    { spk: "P7", name: "Brix", txt: "PureBlooms is built on the Laravel framework using a clean MVC architecture. The frontend is powered by Blade templates and Tailwind CSS, bundled with Vite for fast load times. The entire application is containerized using Docker, ensuring that it runs reliably in any environment." },
+                    { spk: "P8", name: "Novel", txt: "But beyond the stack, we focused on Non-Functional Requirements to solve common real-world failure points. First, Data Integrity. The checkout process is wrapped in database transactions. If database writes fail or a connection drops mid-process, the database rolls back completely. The customer is never double-billed, and stock is never deducted incorrectly." },
+                    { spk: "P7", name: "Brix", txt: "Second, Security. Addon prices are validated strictly on the server-side, meaning users cannot alter prices using browser inspector tools. We also implement password throttling to block brute-force attempts, and strict Role-Based Access Control middleware to protect the admin panel." },
+                    { spk: "P8", name: "Novel", txt: "Third, Reliability and Speed. We prevent duplicate orders by generating unique cart session tokens. If a user double-clicks the purchase button, the system intercepts the duplicate request. We also cache shop settings to decrease database queries, and integrated an toggleable maintenance middleware." }
+                ]
+            },
+            {
+                title: "OM Core Synthesis & Wrap-up",
+                duration: "~1:30",
+                speakers: "P2 & P1",
+                cues: "SHOW Slide 6 (Four Functions Summary). Ruth Joy (P2) and David (P1) deliver final synthesis.",
+                lines: [
+                    { spk: "P2", name: "Ruth Joy", txt: "To bring this full circle, Organizational Management is centered around four core functions, and we have built PureBlooms around all four:" },
+                    { spk: "P2", name: "Ruth Joy", txt: "1. Planning: Managed through the Settings module, defining the parameters, payment rules, and operating states of the shop. 2. Organizing: Enforced by our Role-Based Access Control and user permission hierarchies." },
+                    { spk: "P2", name: "Ruth Joy", txt: "3. Leading: Supported by our live KPI dashboard, which gives leadership the information they need to guide the business. 4. Controlling: Implemented through our real-time inventory alerts, order pipelines, and structured reports." },
+                    { spk: "P1", name: "David", txt: "We are IT students, but today we wanted to show you more than just code. We wanted to present an organization in motion — how it coordinates, how it operates, and how it controls its data." },
+                    { spk: "P1", name: "David", txt: "PureBlooms transforms a chaotic, unorganized flower shop into a structured business entity. Thank you, and we are now open for your questions." }
+                ]
+            }
+        ];
+
+        let activeSlideIdx = 0;
+        let activeSpeakerFilter = 'ALL';
+        let baseFontSize = 16; // px
+
+        // Timer Variables
+        let timerSeconds = 0;
+        let timerInterval = null;
+
+        function loadSlideNotes(slideIdx) {
+            activeSlideIdx = slideIdx;
+            const slide = slideNotes[slideIdx];
+            
+            // Highlight active slide in sidebar
+            const sidebarItems = document.querySelectorAll('.slide-list-item');
+            sidebarItems.forEach((item, idx) => {
+                if (idx === slideIdx) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+
+            // Generate Content HTML
+            let html = `
+                <div class="slide-meta-header">
+                    <span class="slide-duration" style="float: right; font-size: 1rem;">Duration: ${slide.duration}</span>
+                    <h2 class="notes-slide-title">Slide ${slideIdx + 1}: ${slide.title}</h2>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Lead Speakers: ${slide.speakers}</p>
+                </div>
+
+                <div class="cue-panel">
+                    <div class="cue-header">Director & Demo Cues</div>
+                    <div class="cue-content">${slide.cues}</div>
+                </div>
+
+                <div class="script-lines">
+            `;
+
+            slide.lines.forEach((line) => {
+                // Determine class based on current speaker filter
+                let focusClass = 'script-block';
+                if (activeSpeakerFilter !== 'ALL') {
+                    if (line.spk === activeSpeakerFilter) {
+                        focusClass += ' highlighted';
+                    } else {
+                        focusClass += ' faded';
+                    }
+                }
+
+                // Match tag colors
+                const tagClass = `speaker-tag tag-${line.spk.toLowerCase()}`;
+
+                html += `
+                    <div class="${focusClass}">
+                        <div class="speaker-badge-row">
+                            <span class="${tagClass}">${line.spk}</span>
+                            <span class="speaker-name">${line.name}</span>
+                        </div>
+                        <div class="spoken-wordings">${line.txt}</div>
+                    </div>
+                `;
+            });
+
+            html += `</div>`;
+
+            document.getElementById('notesContent').innerHTML = html;
+            
+            // Apply text size changes
+            applyTextSize();
+        }
+
+        function goToSlide(slideIdx) {
+            loadSlideNotes(slideIdx);
+            // Scroll to top of notes
+            document.getElementById('slideNotesPanel').scrollTop = 0;
+        }
+
+        function setSpeakerFilter(speaker) {
+            activeSpeakerFilter = speaker;
+            
+            // Toggle active buttons
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            filterBtns.forEach(btn => {
+                if (btn.textContent.includes(speaker) || (speaker === 'ALL' && btn.textContent === 'All')) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            loadSlideNotes(activeSlideIdx);
+        }
+
+        function adjustTextSize(amount) {
+            baseFontSize += amount;
+            if (baseFontSize < 12) baseFontSize = 12;
+            if (baseFontSize > 24) baseFontSize = 24;
+            applyTextSize();
+        }
+
+        function applyTextSize() {
+            document.documentElement.style.setProperty('--font-size-base', `${baseFontSize}px`);
+        }
+
+        function toggleScriptView() {
+            const slideNotesPanel = document.getElementById('slideNotesPanel');
+            const fullScriptPanel = document.getElementById('fullScriptPanel');
+            const toggleViewBtn = document.getElementById('toggleViewBtn');
+
+            if (slideNotesPanel.style.display !== 'none') {
+                slideNotesPanel.style.display = 'none';
+                fullScriptPanel.style.display = 'block';
+                toggleViewBtn.textContent = 'Slide Notes Mode';
+            } else {
+                slideNotesPanel.style.display = 'block';
+                fullScriptPanel.style.display = 'none';
+                toggleViewBtn.textContent = 'Full Script Mode';
+            }
+        }
+
+        // Timer Functions
+        const timerDisplay = document.getElementById('timerDisplay');
+        const timerToggle = document.getElementById('timerToggle');
+        const timerReset = document.getElementById('timerReset');
+
+        function updateTimerDisplay() {
+            const mins = Math.floor(timerSeconds / 60);
+            const secs = timerSeconds % 60;
+            const displayStr = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            timerDisplay.textContent = displayStr;
+
+            // Handle timer alerts
+            // Target time: 12 minutes (720 seconds)
+            // Warning time: 10 minutes (600 seconds)
+            if (timerSeconds >= 720) {
+                timerDisplay.className = "timer-time warning-red";
+            } else if (timerSeconds >= 600) {
+                timerDisplay.className = "timer-time warning-amber";
+            } else {
+                timerDisplay.className = "timer-time";
+            }
+        }
+
+        timerToggle.addEventListener('click', () => {
+            if (timerInterval) {
+                // Pause timer
+                clearInterval(timerInterval);
+                timerInterval = null;
+                timerToggle.textContent = 'Start';
+            } else {
+                // Start timer
+                timerInterval = setInterval(() => {
+                    timerSeconds++;
+                    updateTimerDisplay();
+                }, 1000);
+                timerToggle.textContent = 'Pause';
+            }
+        });
+
+        timerReset.addEventListener('click', () => {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            timerSeconds = 0;
+            updateTimerDisplay();
+            timerToggle.textContent = 'Start';
+        });
+
+        // Keyboard navigation matching indices
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                if (activeSlideIdx < slideNotes.length - 1) {
+                    goToSlide(activeSlideIdx + 1);
+                }
+            } else if (e.key === 'ArrowLeft') {
+                if (activeSlideIdx > 0) {
+                    goToSlide(activeSlideIdx - 1);
+                }
+            }
+        });
+
+        // Initialize First Slide Notes
+        loadSlideNotes(0);
+    </script>
+</body>
+</html>
