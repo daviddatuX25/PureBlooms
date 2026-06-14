@@ -11,16 +11,16 @@
 
 ## 📋 Document Metadata & Team Roster
 
-| Role Label | Student Name | Project Role / Assignment | Organization Department |
-| :--- | :--- | :--- | :--- |
-| **P1** | David | Narrative Lead & Project Coordinator | Project Management |
-| **P2** | Ruth Joy | OM Integration Analyst & Document Lead | Project Management |
-| **P3** | Brix | Storefront UX Designer & Customer Journey Auditor | Customer Relations |
-| **P4** | Ydel Letice | UI/UX Analyst & Slides Formatting Lead | Customer Relations |
-| **P5** | John Paul | Database Tester & Backend Auditor | Operations Department |
-| **P6** | Von Eiron | Financial & Inventory Audit Lead | Operations Department |
-| **P7** | Aaron Jake | Lead Developer & Repository Maintainer | Development Department |
-| **P8** | Novel | Security Architect & Quality Assurance (QA) | Development Department |
+| Student Name | Project Role / Assignment | Organization Department |
+| :--- | :--- | :--- |
+| David | Narrative Lead & Project Coordinator | Project Management |
+| Ruth Joy | OM Integration Analyst & Document Lead | Project Management |
+| Brix | Storefront UX Designer & Customer Journey Auditor | Customer Relations |
+| Ydel Letice | UI/UX Analyst & Slides Formatting Lead | Customer Relations |
+| John Paul | Database Tester & Backend Auditor | Operations Department |
+| Von Eiron | Financial & Inventory Audit Lead | Operations Department |
+| Aaron Jake | Lead Developer & Repository Maintainer | Development Department |
+| Novel | Security Architect & Quality Assurance (QA) | Development Department |
 
 ---
 
@@ -38,10 +38,10 @@ By integrating management theory directly into system features, PureBlooms enfor
 
 ### 1.1 Organizational Frame (Agile IT Consultancy Structure)
 For the purpose of this project, the development team structured itself as an **Agile IT Consultancy Firm** representing four key organizational departments:
-1. **Project Management (P1 & P2):** Responsible for coordinating system specifications, aligning project features with OM frameworks, and managing delivery timelines.
-2. **Customer Relations (P3 & P4):** Focused on customer journey mapping, storefront user experience (UX), and front-end interface quality checks.
-3. **Operations (P5 & P6):** Responsible for seller-side workflows, tracking administrative usability, verifying report calculations, and auditing inventory logic.
-4. **Development (P7 & P8):** Focused on codebase maintenance, Laravel structure, database transaction safety, and non-functional security requirements.
+1. **Project Management:** Responsible for coordinating system specifications, aligning project features with OM frameworks, and managing delivery timelines (led by David and Ruth Joy).
+2. **Customer Relations:** Focused on customer journey mapping, storefront user experience (UX), and front-end interface quality checks (led by Brix and Ydel Letice).
+3. **Operations:** Responsible for seller-side workflows, tracking administrative usability, verifying report calculations, and auditing inventory logic (led by John Paul and Von Eiron).
+4. **Development:** Focused on codebase maintenance, Laravel structure, database transaction safety, and non-functional security requirements (led by Aaron Jake and Novel).
 
 ### 1.2 The Client Case Study
 The client is a local small-scale florist boutique. Previously, their sales process was entirely decentralized:
@@ -64,31 +64,7 @@ The application uses the **Laravel** PHP framework to enforce a strict Model-Vie
 * **Views (`resources/views/`):** Built with Laravel Blade templates, rendering dynamic data styled with Tailwind CSS, and structured for accessibility.
 * **Controllers (`app/Http/Controllers/`):** Coordinate HTTP requests, validate input data, query models, and return appropriate views or JSON payloads.
 
-```
-                  ┌────────────────────────────────────────┐
-                  │                Browser                 │
-                  └───────────┬────────────────▲───────────┘
-               HTTP Request   │                │   HTML / JSON
-                              ▼                │
-                  ┌────────────────────────────────────────┐
-                  │                 Router                 │
-                  └───────────┬────────────────────────────┘
-                              ▼
-                  ┌────────────────────────────────────────┐
-                  │               Controller               │
-                  └──────┬──────────────────────────▲──────┘
-                         │                          │
-           Read / Write  │                          │ Dynamic Data
-                         ▼                          │
-    ┌──────────────────────────┐      ┌─────────────┴──────────┐
-    │          Model           │      │          View          │
-    └────────────┬─────────────┘      │     (Blade Engine)     │
-                 │                    └────────────────────────┘
-                 ▼ Database Query
-    ┌──────────────────────────┐
-    │     SQLite Database      │
-    └──────────────────────────┘
-```
+![MVC Architecture Diagram](mvc_diagram.png)
 
 ### 2.2 Entity Relationship Diagram (ERD) Outline
 The system is built on a clean database schema, designed to prevent data redundancy and maintain referential integrity.
@@ -103,7 +79,7 @@ The system is built on a clean database schema, designed to prevent data redunda
 
 ---
 
-## 3. System Functionality & Design (40% Weight)
+## 3. System Functionality & Design
 
 This section details the primary software components, modules, and user interfaces designed to support business processes.
 
@@ -191,7 +167,7 @@ The administrative portal serves as the business's central command center, offer
 
 ---
 
-## 4. Problem-Solving, Security & Non-Functional Innovations (20% Weight)
+## 4. Problem-Solving, Security & Non-Functional Innovations
 
 PureBlooms implements several technical safeguards to address common failure points in transactional software.
 
@@ -221,20 +197,7 @@ PureBlooms implements several technical safeguards to address common failure poi
 
 PureBlooms is designed around the four primary functions of Organizational Management.
 
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│                        PureBlooms OM Framework                         │
-└───────────────────────────────────┬────────────────────────────────────┘
-                                    │
-         ┌──────────────────────────┼──────────────────────────┐
-         ▼                          ▼                          ▼
-  ┌─────────────┐            ┌─────────────┐            ┌─────────────┐
-  │  Planning   │            │ Controlling │            │   Leading   │
-  └──────┬──────┘            └──────┬──────┘            └──────┬──────┘
-         │                          │                          │
-         ├─ Store Policies          ├─ Inventory Alerts        └─ KPI Reports
-         └─ Maintenance State       └─ Order Pipeline             (AOV, LTV)
-```
+![OM Framework Diagram](om_framework_diagram.png)
 
 ### 5.1 Planning Function
 * **Definition:** Defining organizational goals, formulating strategies, and setting policies to coordinate activities.
@@ -257,7 +220,7 @@ PureBlooms is designed around the four primary functions of Organizational Manag
 
 ---
 
-## 6. Team Collaboration and Contribution Log (20% Weight)
+## 6. Team Collaboration and Contribution Log
 
 ### 6.1 Team Organizational Structure
 The team divided responsibilities across four distinct functional departments, mirroring a structured IT consultancy organization:
@@ -265,14 +228,14 @@ The team divided responsibilities across four distinct functional departments, m
 ```
                          ┌──────────────────────────┐
                          │      Project Lead        │
-                         │        (P1, P2)          │
+                         │   David & Ruth Joy       │
                          └────────────┬─────────────┘
                                       │
            ┌──────────────────────────┼──────────────────────────┐
            ▼                          ▼                          ▼
     ┌─────────────┐            ┌─────────────┐            ┌─────────────┐
-    │ Customer Rel│            │ Operations  │            │ Development │
-    │  (P3, P4)   │            │  (P5, P6)   │            │  (P7, P8)   │
+    │Customer Rel.│            │ Operations  │            │ Development │
+    │Brix & Ydel  │            │JP & VonEiron│            │Aaron & Novel│
     └─────────────┘            └─────────────┘            └─────────────┘
 ```
 
@@ -280,16 +243,16 @@ The team divided responsibilities across four distinct functional departments, m
 
 The table below outlines the primary contributions of each team member:
 
-| Member Label | Student Name | Assigned Department | Key Architectural & Documentation Contributions |
-| :--- | :--- | :--- | :--- |
-| **P1** | David | Project Management | Coordinates team delivery, drafts structural script outlines, configured Docker environments, and integrated user profiles. |
-| **P2** | Ruth Joy | Project Management | Aligns system design with OM theoretical models, designs presentation assets, and writes system documentation. |
-| **P3** | Brix | Customer Relations | Drafts customer journey maps, runs front-end usability audits, and checks the cart module for user friction. |
-| **P4** | Ydel Letice | Customer Relations | Audits the checkout UI, coordinates presentation layouts, and tests storefront responsiveness across mobile devices. |
-| **P5** | John Paul | Operations | Validates order management views, tests SQL constraints, and audits database write behaviors. |
-| **P6** | Von Eiron | Operations | Oversees inventory reporting, verifies financial calculation logic, and reviews CRM reporting tools. |
-| **P7** | Aaron Jake | Development | Serves as Lead Developer. Manages repository operations, oversees the Laravel codebase, and implements MVC architecture. |
-| **P8** | Novel | Development | Functions as Security Architect. Implements rate limiters, verifies database transaction safety, and configures route middleware protections. |
+| Student Name | Assigned Department | Key Architectural & Documentation Contributions |
+| :--- | :--- | :--- |
+| David | Project Management | Coordinates team delivery, drafts structural script outlines, configured Docker environments, and integrated user profiles. |
+| Ruth Joy | Project Management | Aligns system design with OM theoretical models, designs presentation assets, and writes system documentation. |
+| Brix | Customer Relations | Drafts customer journey maps, runs front-end usability audits, and checks the cart module for user friction. |
+| Ydel Letice | Customer Relations | Audits the checkout UI, coordinates presentation layouts, and tests storefront responsiveness across mobile devices. |
+| John Paul | Operations | Validates order management views, tests SQL constraints, and audits database write behaviors. |
+| Von Eiron | Operations | Oversees inventory reporting, verifies financial calculation logic, and reviews CRM reporting tools. |
+| Aaron Jake | Development | Serves as Lead Developer. Manages repository operations, oversees the Laravel codebase, and implements MVC architecture. |
+| Novel | Development | Functions as Security Architect. Implements rate limiters, verifies database transaction safety, and configures route middleware protections. |
 
 ### 6.3 Collaboration Methodology
 The project was executed using Agile software development methodologies:
