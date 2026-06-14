@@ -429,7 +429,7 @@
                         </tr>
                         <tr>
                             <td><span class="speaker-tag" style="background:#06b6d4; color:white;">P7</span></td>
-                            <td><strong>Brix</strong></td>
+                            <td><strong>Aaron Jake</strong></td>
                             <td>Development Department</td>
                             <td>Lead System Architect</td>
                         </tr>
@@ -456,26 +456,26 @@
                 <blockquote>"Exactly. By analyzing the system through these distinct lenses, we can map how a simple flower shop operates under the four core functions of management: Planning, Organizing, Leading, and Controlling. Our system is called PureBlooms — an e-commerce platform designed for a local flower shop. Let's start by looking at the organizational gap and the core business problem it solves. P3, take us away."</blockquote>
 
                 <h2>ACT 1 — THE PROBLEM HOOK</h2>
-                <p><strong>[S2-1] P3 (Aaron Jake):</strong></p>
+                <p><strong>[S2-1] P3 (Brix):</strong></p>
                 <blockquote>"Picture this. You want to send flowers to someone special. You search on Facebook and find a small flower shop. You DM them. You wait. You follow up. They reply hours later, only to tell you that the bouquet you wanted is already out of stock. So you try another shop. You message them, and they send you a GCash QR code. You pay, send the screenshot, and... nothing. No confirmation, no receipt, no idea when it will arrive. You just wait, hope, and stress. This is the everyday reality of buying from a small, unorganized flower vendor. And it is completely unnecessary."</blockquote>
 
                 <p><strong>[S1-1] P1 (David):</strong></p>
                 <blockquote>"From an organizational standpoint, this represents a major management gap. Small businesses in the gifting space often operate without any formal system. Orders are tracked in messy chat logs, inventory is guessed, and revenue is calculated from memory. The core management functions are simply absent. PureBlooms is designed to bridge this gap. It's not just a website; it is an operational control system that structures these chaotic processes. Let's show you how this looks on the customer's end."</blockquote>
 
                 <h2>ACT 2 — THE CUSTOMER EXPERIENCE</h2>
-                <p><strong>[S3-1] P3 (Aaron Jake):</strong></p>
+                <p><strong>[S3-1] P3 (Brix):</strong></p>
                 <blockquote>"As a customer, I want a storefront I can trust. The moment I land on the PureBlooms homepage, I see featured products, categories, and a clean, responsive layout. There's no clutter, making my browsing experience seamless."</blockquote>
                 <p><strong>[S3-2] P4 (Ydel Letice):</strong></p>
                 <blockquote>"From a design perspective, this layout minimizes what we call cognitive load. The product card displays only essential details: image, name, category, and price. This minimalist design helps guide the customer toward a decision quickly."</blockquote>
-                <p><strong>[S3-3] P3 (Aaron Jake):</strong></p>
+                <p><strong>[S3-3] P3 (Brix):</strong></p>
                 <blockquote>"I can add items to my shopping cart, or use the 'Buy Now' button to skip the cart altogether. This direct checkout path respects the customer's time."</blockquote>
                 <p><strong>[S3-4] P4 (Ydel Letice):</strong></p>
                 <blockquote>"On the checkout page, the system offers customizable add-ons like gift wrapping or a message card. These are not hardcoded; the admin can update, price, and toggle these add-ons dynamically. This is a subtle yet powerful tool for average order value optimization."</blockquote>
-                <p><strong>[S3-5] P3 (Aaron Jake):</strong></p>
+                <p><strong>[S3-5] P3 (Brix):</strong></p>
                 <blockquote>"For payment, we support Cash on Delivery and GCash. I'll select Cash on Delivery, fill in my shipping address, and submit the order."</blockquote>
                 <p><strong>[S3-6] P4 (Ydel Letice):</strong></p>
                 <blockquote>"Once submitted, the system generates a unique order tracking number and sends an automated confirmation email. Now, let's track our order."</blockquote>
-                <p><strong>[S3-7] P3 (Aaron Jake):</strong></p>
+                <p><strong>[S3-7] P3 (Brix):</strong></p>
                 <blockquote>"Instead of messaging a seller and waiting for replies, I can see a live status timeline: Pending, Processing, Shipped, and Delivered. The process is completely transparent."</blockquote>
 
                 <h2>ACT 3 — THE SELLER EXPERIENCE</h2>
@@ -497,11 +497,11 @@
                 <blockquote>"Lastly, the Settings page controls shop variables, payment methods, and includes a Maintenance Mode toggle to temporarily take the store offline gracefully. This represents the Planning function: defining boundaries for daily operations."</blockquote>
 
                 <h2>ACT 4 — THE DEVELOPER PERSPECTIVE</h2>
-                <p><strong>[S5-1] P7 (Brix):</strong></p>
+                <p><strong>[S5-1] P7 (Aaron Jake):</strong></p>
                 <blockquote>"Now, let's peek under the hood. Building a system that looks good is only half the battle. Making it robust, secure, and production-ready is where engineering matters. PureBlooms is built on the Laravel framework using a clean MVC architecture. The frontend is powered by Blade templates and Tailwind CSS, bundled with Vite for fast load times. The entire application is containerized using Docker, ensuring that it runs reliably in any environment."</blockquote>
                 <p><strong>[S5-2] P8 (Novel):</strong></p>
                 <blockquote>"But beyond the stack, we focused on Non-Functional Requirements to solve common real-world failure points. First, Data Integrity. The checkout process is wrapped in database transactions. If database writes fail or a connection drops mid-process, the database rolls back completely. The customer is never double-billed, and stock is never deducted incorrectly."</blockquote>
-                <p><strong>[S5-3] P7 (Brix):</strong></p>
+                <p><strong>[S5-3] P7 (Aaron Jake):</strong></p>
                 <blockquote>"Second, Security. Addon prices are validated strictly on the server-side, meaning users cannot alter prices using browser inspector tools. We also implement password throttling to block brute-force attempts, and strict Role-Based Access Control middleware to protect the admin panel."</blockquote>
                 <p><strong>[S5-4] P8 (Novel):</strong></p>
                 <blockquote>"Third, Reliability and Speed. We prevent duplicate orders by generating unique cart session tokens. If a user double-clicks the purchase button, the system intercepts the duplicate request. We also cache shop settings to decrease database queries, and integrated an toggleable maintenance middleware."</blockquote>

@@ -601,11 +601,11 @@
                     <button class="filter-btn active" onclick="setSpeakerFilter('ALL')">All</button>
                     <button class="filter-btn" onclick="setSpeakerFilter('P1')">P1 (David)</button>
                     <button class="filter-btn" onclick="setSpeakerFilter('P2')">P2 (Ruth)</button>
-                    <button class="filter-btn" onclick="setSpeakerFilter('P3')">P3 (Aaron)</button>
+                    <button class="filter-btn" onclick="setSpeakerFilter('P3')">P3 (Brix)</button>
                     <button class="filter-btn" onclick="setSpeakerFilter('P4')">P4 (Ydel)</button>
                     <button class="filter-btn" onclick="setSpeakerFilter('P5')">P5 (John)</button>
                     <button class="filter-btn" onclick="setSpeakerFilter('P6')">P6 (Von)</button>
-                    <button class="filter-btn" onclick="setSpeakerFilter('P7')">P7 (Brix)</button>
+                    <button class="filter-btn" onclick="setSpeakerFilter('P7')">P7 (Aaron)</button>
                     <button class="filter-btn" onclick="setSpeakerFilter('P8')">P8 (Novel)</button>
                 </div>
 
@@ -642,7 +642,7 @@
 
                     <h2>ACT 1 — THE PROBLEM HOOK <span class="act-num-badge">Slide 2</span></h2>
                     
-                    <p><strong>[S2-1] Speaker: P3 (Aaron Jake)</strong></p>
+                    <p><strong>[S2-1] Speaker: P3 (Brix)</strong></p>
                     <blockquote>"Picture this. You want to send flowers to someone special. You search on Facebook and find a small flower shop. You DM them. You wait. You follow up. They reply hours later, only to tell you that the bouquet you wanted is already out of stock. So you try another shop. You message them, and they send you a GCash QR code. You pay, send the screenshot, and... nothing. No confirmation, no receipt, no idea when it will arrive. You just wait, hope, and stress. This is the everyday reality of buying from a small, unorganized flower vendor. And it is completely unnecessary."</blockquote>
 
                     <p><strong>[S2-2] Speaker: P1 (David)</strong></p>
@@ -650,25 +650,25 @@
 
                     <h2>ACT 2 — THE CUSTOMER EXPERIENCE <span class="act-num-badge">Slide 3</span></h2>
                     
-                    <p><strong>[S3-1] Speaker: P3 (Aaron Jake)</strong></p>
+                    <p><strong>[S3-1] Speaker: P3 (Brix)</strong></p>
                     <blockquote>"As a customer, I want a storefront I can trust. The moment I land on the PureBlooms homepage, I see featured products, categories, and a clean, responsive layout. There's no clutter, making my browsing experience seamless."</blockquote>
                     
                     <p><strong>[S3-2] Speaker: P4 (Ydel Letice)</strong></p>
                     <blockquote>"From a design perspective, this layout minimizes what we call cognitive load. The product card displays only essential details: image, name, category, and price. This minimalist design helps guide the customer toward a decision quickly."</blockquote>
                     
-                    <p><strong>[S3-3] Speaker: P3 (Aaron Jake)</strong></p>
+                    <p><strong>[S3-3] Speaker: P3 (Brix)</strong></p>
                     <blockquote>"I can add items to my shopping cart, or use the 'Buy Now' button to skip the cart altogether. This direct checkout path respects the customer's time."</blockquote>
                     
                     <p><strong>[S3-4] Speaker: P4 (Ydel Letice)</strong></p>
                     <blockquote>"On the checkout page, the system offers customizable add-ons like gift wrapping or a message card. These are not hardcoded; the admin can update, price, and toggle these add-ons dynamically. This is a subtle yet powerful tool for average order value optimization."</blockquote>
                     
-                    <p><strong>[S3-5] Speaker: P3 (Aaron Jake)</strong></p>
+                    <p><strong>[S3-5] Speaker: P3 (Brix)</strong></p>
                     <blockquote>"For payment, we support Cash on Delivery and GCash. I'll select Cash on Delivery, fill in my shipping address, and submit the order."</blockquote>
                     
                     <p><strong>[S3-6] Speaker: P4 (Ydel Letice)</strong></p>
                     <blockquote>"Once submitted, the system generates a unique order tracking number and sends an automated confirmation email. Now, let's track our order."</blockquote>
                     
-                    <p><strong>[S3-7] Speaker: P3 (Aaron Jake)</strong></p>
+                    <p><strong>[S3-7] Speaker: P3 (Brix)</strong></p>
                     <blockquote>"Instead of messaging a seller and waiting for replies, I can see a live status timeline: Pending, Processing, Shipped, and Delivered. The process is completely transparent."</blockquote>
 
                     <h2>ACT 3 — THE SELLER EXPERIENCE <span class="act-num-badge">Slide 4</span></h2>
@@ -699,13 +699,13 @@
 
                     <h2>ACT 4 — THE DEVELOPER PERSPECTIVE <span class="act-num-badge">Slide 5</span></h2>
                     
-                    <p><strong>[S5-1] Speaker: P7 (Brix)</strong></p>
+                    <p><strong>[S5-1] Speaker: P7 (Aaron)</strong></p>
                     <blockquote>"Now, let's peek under the hood. Building a system that looks good is only half the battle. Making it robust, secure, and production-ready is where engineering matters. PureBlooms is built on the Laravel framework using a clean Model-View-Controller (MVC) architecture. The frontend is powered by Blade templates and Tailwind CSS, bundled with Vite for fast load times. The entire application is containerized using Docker, ensuring that it runs reliably in any environment."</blockquote>
                     
                     <p><strong>[S5-2] Speaker: P8 (Novel)</strong></p>
                     <blockquote>"But beyond the stack, we focused on Non-Functional Requirements to solve common real-world failure points. First, Data Integrity. The checkout process is wrapped in database transactions. If database writes fail or a connection drops mid-process, the database rolls back completely. The customer is never double-billed, and stock is never deducted incorrectly."</blockquote>
                     
-                    <p><strong>[S5-3] Speaker: P7 (Brix)</strong></p>
+                    <p><strong>[S5-3] Speaker: P7 (Aaron)</strong></p>
                     <blockquote>"Second, Security. Addon prices are validated strictly on the server-side, meaning users cannot alter prices using browser inspector tools. We also implement password throttling to block brute-force attempts, and strict Role-Based Access Control (RBAC) middleware to protect the admin panel."</blockquote>
                     
                     <p><strong>[S5-4] Speaker: P8 (Novel)</strong></p>
@@ -745,11 +745,11 @@
                 title: "The Core Problem",
                 duration: "~1:30",
                 speakers: "P3 & P1",
-                cues: "SHOW Slide 2 (Problem Hook). Focus on the customer frustration. P3 (Aaron Jake) narrates.",
+                cues: "SHOW Slide 2 (Problem Hook). Focus on the customer frustration. P3 (Brix) narrates.",
                 lines: [
-                    { spk: "P3", name: "Aaron Jake", txt: "Picture this. You want to send flowers to someone special. You search on Facebook and find a small flower shop. You DM them. You wait. You follow up. They reply hours later, only to tell you that the bouquet you wanted is already out of stock." },
-                    { spk: "P3", name: "Aaron Jake", txt: "So you try another shop. You message them, and they send you a GCash QR code. You pay, send the screenshot, and... nothing. No confirmation, no receipt, no idea when it will arrive. You just wait, hope, and stress." },
-                    { spk: "P3", name: "Aaron Jake", txt: "This is the everyday reality of buying from a small, unorganized flower vendor. And it is completely unnecessary." },
+                    { spk: "P3", name: "Brix", txt: "Picture this. You want to send flowers to someone special. You search on Facebook and find a small flower shop. You DM them. You wait. You follow up. They reply hours later, only to tell you that the bouquet you wanted is already out of stock." },
+                    { spk: "P3", name: "Brix", txt: "So you try another shop. You message them, and they send you a GCash QR code. You pay, send the screenshot, and... nothing. No confirmation, no receipt, no idea when it will arrive. You just wait, hope, and stress." },
+                    { spk: "P3", name: "Brix", txt: "This is the everyday reality of buying from a small, unorganized flower vendor. And it is completely unnecessary." },
                     { spk: "P1", name: "David", txt: "From an organizational standpoint, this represents a major management gap. Small businesses in the gifting space often operate without any formal system. Orders are tracked in messy chat logs, inventory is guessed, and revenue is calculated from memory. The core management functions are simply absent." },
                     { spk: "P1", name: "David", txt: "PureBlooms is designed to bridge this gap. It's not just a website; it is an operational control system that structures these chaotic processes. Let's show you how this looks on the customer's end." }
                 ]
@@ -760,13 +760,13 @@
                 speakers: "P3 & P4",
                 cues: "LIVE DEMO CUE: Open browser with the actual flower shop storefront. Presenters execute cart additions and GCash demo. P3 drives, P4 narrates.",
                 lines: [
-                    { spk: "P3", name: "Aaron Jake", txt: "As a customer, I want a storefront I can trust. The moment I land on the PureBlooms homepage, I see featured products, categories, and a clean, responsive layout. There's no clutter, making my browsing experience seamless. [DEMO CUE: Scroll grid slowly]" },
+                    { spk: "P3", name: "Brix", txt: "As a customer, I want a storefront I can trust. The moment I land on the PureBlooms homepage, I see featured products, categories, and a clean, responsive layout. There's no clutter, making my browsing experience seamless. [DEMO CUE: Scroll grid slowly]" },
                     { spk: "P4", name: "Ydel Letice", txt: "From a design perspective, this layout minimizes what we call cognitive load. The product card displays only essential details: image, name, category, and price. This minimalist design helps guide the customer toward a decision quickly. [DEMO CUE: Click product page]" },
-                    { spk: "P3", name: "Aaron Jake", txt: "I can add items to my shopping cart, or use the 'Buy Now' button to skip the cart altogether. This direct checkout path respects the customer's time. [DEMO CUE: Click Buy Now]" },
+                    { spk: "P3", name: "Brix", txt: "I can add items to my shopping cart, or use the 'Buy Now' button to skip the cart altogether. This direct checkout path respects the customer's time. [DEMO CUE: Click Buy Now]" },
                     { spk: "P4", name: "Ydel Letice", txt: "On the checkout page, the system offers customizable add-ons like gift wrapping or a message card. These are not hardcoded; the admin can update, price, and toggle these add-ons dynamically. This is a subtle yet powerful tool for average order value optimization. [DEMO CUE: Select an add-on]" },
-                    { spk: "P3", name: "Aaron Jake", txt: "For payment, we support Cash on Delivery and GCash. I'll select Cash on Delivery, fill in my shipping address, and submit the order. [DEMO CUE: Submit Order]" },
+                    { spk: "P3", name: "Brix", txt: "For payment, we support Cash on Delivery and GCash. I'll select Cash on Delivery, fill in my shipping address, and submit the order. [DEMO CUE: Submit Order]" },
                     { spk: "P4", name: "Ydel Letice", txt: "Once submitted, the system generates a unique order tracking number and sends an automated confirmation email. Now, let's track our order. [DEMO CUE: Navigate to Tracking]" },
-                    { spk: "P3", name: "Aaron Jake", txt: "Instead of messaging a seller and waiting for replies, I can see a live status timeline: Pending, Processing, Shipped, and Delivered. The process is completely transparent." }
+                    { spk: "P3", name: "Brix", txt: "Instead of messaging a seller and waiting for replies, I can see a live status timeline: Pending, Processing, Shipped, and Delivered. The process is completely transparent." }
                 ]
             },
             {
@@ -792,10 +792,10 @@
                 speakers: "P7 & P8",
                 cues: "SHOW Slide 5 (Tech stack, NFRs). Focus on system robustness and engineering decisions. P7 and P8 present.",
                 lines: [
-                    { spk: "P7", name: "Brix", txt: "Now, let's peek under the hood. Building a system that looks good is only half the battle. Making it robust, secure, and production-ready is where engineering matters." },
-                    { spk: "P7", name: "Brix", txt: "PureBlooms is built on the Laravel framework using a clean MVC architecture. The frontend is powered by Blade templates and Tailwind CSS, bundled with Vite for fast load times. The entire application is containerized using Docker, ensuring that it runs reliably in any environment." },
+                    { spk: "P7", name: "Aaron Jake", txt: "Now, let's peek under the hood. Building a system that looks good is only half the battle. Making it robust, secure, and production-ready is where engineering matters." },
+                    { spk: "P7", name: "Aaron Jake", txt: "PureBlooms is built on the Laravel framework using a clean MVC architecture. The frontend is powered by Blade templates and Tailwind CSS, bundled with Vite for fast load times. The entire application is containerized using Docker, ensuring that it runs reliably in any environment." },
                     { spk: "P8", name: "Novel", txt: "But beyond the stack, we focused on Non-Functional Requirements to solve common real-world failure points. First, Data Integrity. The checkout process is wrapped in database transactions. If database writes fail or a connection drops mid-process, the database rolls back completely. The customer is never double-billed, and stock is never deducted incorrectly." },
-                    { spk: "P7", name: "Brix", txt: "Second, Security. Addon prices are validated strictly on the server-side, meaning users cannot alter prices using browser inspector tools. We also implement password throttling to block brute-force attempts, and strict Role-Based Access Control middleware to protect the admin panel." },
+                    { spk: "P7", name: "Aaron Jake", txt: "Second, Security. Addon prices are validated strictly on the server-side, meaning users cannot alter prices using browser inspector tools. We also implement password throttling to block brute-force attempts, and strict Role-Based Access Control middleware to protect the admin panel." },
                     { spk: "P8", name: "Novel", txt: "Third, Reliability and Speed. We prevent duplicate orders by generating unique cart session tokens. If a user double-clicks the purchase button, the system intercepts the duplicate request. We also cache shop settings to decrease database queries, and integrated an toggleable maintenance middleware." }
                 ]
             },
