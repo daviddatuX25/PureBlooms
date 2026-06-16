@@ -1,0 +1,27 @@
+graph TB
+    subgraph Client["Client Browser"]
+        UI["User Interface (Blade Templates + Tailwind CSS)"]
+    end
+
+    subgraph MVC["Laravel MVC Architecture"]
+        V["VIEW\nresources/views/\n- Blade Templates\n- Components\n- Layouts"]
+        C["CONTROLLER\napp/Http/Controllers/\n- HomeController\n- CheckoutController\n- AdminDashboardController\n- ProductController\n- OrderController"]
+        M["MODEL\napp/Models/\n- User\n- Product\n- Category\n- Order\n- OrderItem\n- Addon\n- Setting"]
+    end
+
+    subgraph DB["Database (MySQL)"]
+        TABLES["Tables:\nusers, products, categories,\norders, order_items,\naddons, settings"]
+    end
+
+    UI -->|HTTP Request| C
+    C -->|Data / View| V
+    C <-->|Eloquent ORM| M
+    M <-->|SQL Queries| DB
+    V -->|Rendered HTML| UI
+
+    style Client fill:#f0f9ff,stroke:#0ea5e9,stroke-width:2px
+    style MVC fill:#fef3c7,stroke:#f59e0b,stroke-width:2px
+    style DB fill:#fce7f3,stroke:#ec4899,stroke-width:2px
+    style V fill:#ffffff,stroke:#374151,stroke-width:1px
+    style C fill:#ffffff,stroke:#374151,stroke-width:1px
+    style M fill:#ffffff,stroke:#374151,stroke-width:1px

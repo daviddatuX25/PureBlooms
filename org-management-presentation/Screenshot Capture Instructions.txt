@@ -1,0 +1,266 @@
+PUREBLOOMS SYSTEM DOCUMENTATION
+SCREENSHOT CAPTURE INSTRUCTIONS FOR TEAM MEMBERS
+=====================================================================
+
+LIVE SITE:  https://37ab-136-239-226-85.ngrok-free.app
+(If this URL doesn't load, ask David for the new ngrok URL)
+
+ALL ACCOUNTS USE PASSWORD: demo123
+
+---------------------------------------------------------------------
+HOW TO TAKE CLEAN SCREENSHOTS
+---------------------------------------------------------------------
+1. Use Chrome or Firefox
+2. Set browser zoom to 100% (Ctrl+0)
+3. Use a 1920x1080 monitor or maximized window
+4. After logging in, wait for page to fully load before capturing
+5. Capture the full browser viewport (not the whole desktop)
+   - Windows: Win + Shift + S, select the browser area
+   - Mac: Cmd + Shift + 4, select the browser area
+6. Save as PNG, name the file EXACTLY as listed below
+7. Crop out the browser address bar and bookmarks if possible
+
+---------------------------------------------------------------------
+ACCOUNTS YOU WILL NEED
+---------------------------------------------------------------------
+CUSTOMER ACCOUNT (for storefront screenshots):
+   Email: brix@customer.com
+   Password: demo123
+
+ADMIN ACCOUNT (for dashboard screenshots):
+   Email: david@pureblooms.com
+   Password: demo123
+
+LOGIN PAGE: https://37ab-136-239-226-85.ngrok-free.app/login
+
+
+=====================================================================
+SCREENSHOT 1: customer_storefront_homepage.png
+=====================================================================
+WHAT IT SHOWS: Customer homepage with product grid, categories, navigation
+
+STEPS:
+  1. Log in as CUSTOMER:  brix@customer.com / demo123
+  2. You will land on the homepage automatically
+     (If not, go to: /)
+  3. Make sure you see:
+     - The PureBlooms header/logo
+     - Category tabs or filters
+     - Product cards with images, names, prices
+     - "Add to Cart" or "Buy Now" buttons
+  4. Take the screenshot
+
+DOCUMENT LOCATION: Paragraph 93, under "Interactive Storefront Homepage"
+CAPTION IN DOC: Customer homepage displaying featured bouquets, category tabs, and header navigation.
+
+
+=====================================================================
+SCREENSHOT 2: customer_checkout_page.png
+=====================================================================
+WHAT IT SHOWS: Checkout form with customer details, payment options, add-ons
+
+STEPS:
+  1. While logged in as CUSTOMER (brix@customer.com / demo123)
+  2. Go to the homepage (/)
+  3. Click "Add to Cart" or "Buy Now" on any product
+  4. If you used Add to Cart, click the cart icon and proceed to checkout
+  5. On the checkout page, make sure you see:
+     - Customer name / contact details form
+     - Delivery address fields
+     - Payment method options (COD and GCash)
+     - Add-on selection area (wrappers, greeting cards)
+     - Order total / summary
+  6. Take the screenshot
+     DO NOT click "Place Order" -- just capture the filled form
+
+DOCUMENT LOCATION: Paragraph 99, under "Cart & Checkout Workflow"
+CAPTION IN DOC: Checkout screen displaying customer details form, payment method toggles, and dynamic add-on selection.
+
+
+=====================================================================
+SCREENSHOT 3: customer_order_tracking.png
+=====================================================================
+WHAT IT SHOWS: Order tracking page with the vertical status timeline
+
+STEPS:
+  1. While logged in as CUSTOMER (brix@customer.com / demo123)
+  2. Go to: /customer/orders
+  3. Click on any order (e.g., DEMO-0001 or any visible order)
+  4. Click "Track Order" or go to the track page
+     (URL pattern: /customer/orders/1/track -- try order ID 1 or 2)
+  5. Make sure you see:
+     - The vertical timeline with status steps
+     - Statuses: Pending, Processing, Shipped, Delivered
+     - The order number displayed
+     - Current status highlighted
+  6. Take the screenshot
+
+DOCUMENT LOCATION: Paragraph 104, under "Order Tracking and Timeline"
+CAPTION IN DOC: Customer order tracking page displaying a visual vertical timeline of the order's fulfillment path.
+
+
+=====================================================================
+SCREENSHOT 4: admin_dashboard.png
+=====================================================================
+WHAT IT SHOWS: Admin dashboard with KPI cards, metrics, alerts
+
+STEPS:
+  1. Log out from customer, then log in as ADMIN:  david@pureblooms.com / demo123
+  2. You will land on the admin dashboard automatically
+     (If not, go to: /admin/dashboard)
+  3. Make sure you see:
+     - KPI / metric cards at the top (Total Revenue, Total Orders, etc.)
+     - Pending orders count
+     - Low stock alerts
+     - Any charts or graphs
+  4. Take the screenshot
+
+DOCUMENT LOCATION: Paragraph 112, under "Real-Time KPI Dashboard"
+CAPTION IN DOC: Admin Dashboard showing high-level KPIs, metric cards, and low-stock notification alerts.
+
+
+=====================================================================
+SCREENSHOT 5: admin_order_pipeline.png
+=====================================================================
+WHAT IT SHOWS: Admin order list with filter tabs, status badges, action buttons
+
+STEPS:
+  1. While logged in as ADMIN (david@pureblooms.com / demo123)
+  2. Go to: /admin/orders
+  3. Make sure you see:
+     - The orders table or list
+     - Filter tabs (All, Pending, Processing, Shipped, Delivered, etc.)
+     - Order numbers (DEMO-0001 through DEMO-0008)
+     - Status badges with colors
+     - Action buttons (View, Edit, Update Status)
+  4. Take the screenshot
+
+DOCUMENT LOCATION: Paragraph 117, under "Order Pipeline Management"
+CAPTION IN DOC: Admin order list interface showing filter tabs, action buttons, and status badge indicators.
+
+
+=====================================================================
+SCREENSHOT 6: admin_sales_report.png
+=====================================================================
+WHAT IT SHOWS: Sales report with revenue metrics and order data
+
+STEPS:
+  1. While logged in as ADMIN (david@pureblooms.com / demo123)
+  2. Go to: /admin/reports/sales
+  3. Make sure you see:
+     - Revenue totals
+     - Order counts
+     - Any graphs or tables showing sales data
+     - Date filters if present
+  4. Take the screenshot
+     (If the Sales page looks empty, also try /admin/reports for the
+      main reports landing page)
+
+DOCUMENT LOCATION: Paragraph 124, under "Sales, Inventory & CRM Reporting"
+CAPTION IN DOC: Admin Sales Report displaying order frequencies and total revenue metrics.
+
+
+=====================================================================
+SCREENSHOT 7: admin_settings_maintenance.png
+=====================================================================
+WHAT IT SHOWS: Settings page with payment toggles and maintenance mode switch
+
+STEPS:
+  1. While logged in as ADMIN (david@pureblooms.com / demo123)
+  2. Go to: /admin/settings
+  3. Make sure you see:
+     - Store name / contact info fields
+     - Payment method toggles (GCash, COD)
+     - The Maintenance Mode on/off switch
+     - Any other operational settings
+  4. Take the screenshot
+     IMPORTANT: Do NOT toggle maintenance mode ON. Just capture the page.
+
+DOCUMENT LOCATION: Paragraph 129, under "Shop Settings and Maintenance Mode"
+CAPTION IN DOC: System Settings page displaying payment toggles and the global Maintenance Mode switch.
+
+
+=====================================================================
+ADDITIONAL FIGURES (NOT SCREENSHOTS -- DIAGRAMS)
+=====================================================================
+These three spots in the document reference figures/diagrams, not
+browser screenshots. They need to be created separately:
+
+1. Paragraph 73: "Figure: MVC Architecture Diagram"
+   -> Needs an MVC diagram showing Model, View, Controller flow
+   -> Can be drawn or made with a diagram tool
+
+2. Paragraph 157: "Figure: OM Framework Diagram"
+   -> Needs a diagram showing the 4 OM functions (Planning,
+      Organizing, Leading, Controlling) mapped to PureBlooms modules
+
+3. Paragraph 178: "Figure: Team Organizational Structure"
+   -> Needs an org chart showing the 4 departments and 8 members
+
+
+=====================================================================
+PLACING SCREENSHOTS INTO THE DOCX
+=====================================================================
+Once you have all 7 screenshots saved as PNG files:
+
+1. Open PureBlooms_Developed_System_Documentation.docx in MS Word
+2. For each placeholder, do the following:
+
+   a. Find the placeholder text, e.g.:
+      [SCREENSHOT PLACEHOLDER: customer_storefront_homepage.png]
+
+   b. Delete that placeholder line entirely
+
+   c. In its place, go to Insert > Pictures > This Device
+   d. Select the matching PNG file
+   E. After inserting, add a caption below the image using this format:
+      "Figure X. <caption from this instruction sheet>"
+
+   f. Center-align both the image and the caption
+
+3. Suggested figure numbering:
+   Figure 1. MVC Architecture Diagram (para 73)
+   Figure 2. Customer Homepage (para 93)
+   Figure 3. Checkout Workflow (para 99)
+   Figure 4. Order Tracking Timeline (para 104)
+   Figure 5. Admin Dashboard (para 112)
+   Figure 6. Order Pipeline Management (para 117)
+   Figure 7. Sales Report (para 124)
+   Figure 8. Settings & Maintenance (para 129)
+   Figure 9. OM Framework Diagram (para 157)
+   Figure 10. Team Organizational Structure (para 178)
+
+
+=====================================================================
+QUICK CHECKLIST
+=====================================================================
+[ ] 1. customer_storefront_homepage.png  (login: customer)
+[ ] 2. customer_checkout_page.png        (login: customer)
+[ ] 3. customer_order_tracking.png       (login: customer)
+[ ] 4. admin_dashboard.png               (login: admin)
+[ ] 5. admin_order_pipeline.png          (login: admin)
+[ ] 6. admin_sales_report.png            (login: admin)
+[ ] 7. admin_settings_maintenance.png    (login: admin)
+[ ] 8. Insert all 7 into the docx, delete placeholders
+[ ] 9. Create/insert 3 diagrams (MVC, OM Framework, Org Chart)
+[ ] 10. Print
+
+
+---------------------------------------------------------------------
+IF THE NGROK URL DOESN'T WORK
+---------------------------------------------------------------------
+The ngrok URL changes every time the tunnel restarts. If the URL
+above doesn't load:
+  1. Ask David for the new URL, OR
+  2. David can run this to get it:
+     grep APP_URL /home/user/Downloads/Pure\ Blooms/.env
+  3. Update all URLs in these instructions accordingly
+
+---------------------------------------------------------------------
+PROBLEMS / QUESTIONS
+---------------------------------------------------------------------
+- If a page shows an error or looks broken, tell David immediately
+- If you can't log in, double-check the password is demo123
+- If an order tracking page is blank, try a different order ID
+- Do not modify any data (don't delete products, change statuses, etc.)
+- Just capture screenshots and leave everything as-is

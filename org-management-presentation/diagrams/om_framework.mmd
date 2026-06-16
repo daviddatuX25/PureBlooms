@@ -1,0 +1,30 @@
+graph TB
+    subgraph OM["Organizational Management Functions"]
+        P["PLANNING\n📋 Define goals, strategies,\npolices, procedures"]
+        O["ORGANIZING\n🏗 Structure, roles,\nresources, departments"]
+        L["LEADING\n👥 Direct, motivate,\ncommunicate, decide"]
+        Ctrl["CONTROLLING\n📊 Monitor, compare,\ncorrect, evaluate"]
+    end
+
+    subgraph PureBlooms["PureBlooms System Modules"]
+        M1["SETTINGS MODULE\n- Shop policies\n- Payment gates\n- Maintenance mode\n- Currency/locale"]
+        M2["RBAC MIDDLEWARE\n- Admin vs Customer\n- Role gates\n- Auth throttling"]
+        M3["KPI DASHBOARD\n- Revenue metrics\n- Order pipeline\n- Low-stock alerts\n- Customer LTV"]
+        M4["REPORTING & ALERTS\n- Sales reports\n- Inventory monitoring\n- Order tracking\n- CRM analytics"]
+    end
+
+    P -->|maps to| M1
+    O -->|maps to| M2
+    L -->|maps to| M3
+    Ctrl -->|maps to| M4
+
+    style OM fill:#f0fdf4,stroke:#22c55e,stroke-width:2px
+    style PureBlooms fill:#fef3c7,stroke:#f59e0b,stroke-width:2px
+    style P fill:#ffffff,stroke:#16a34a,stroke-width:1px
+    style O fill:#ffffff,stroke:#16a34a,stroke-width:1px
+    style L fill:#ffffff,stroke:#16a34a,stroke-width:1px
+    style Ctrl fill:#ffffff,stroke:#16a34a,stroke-width:1px
+    style M1 fill:#fef9c3,stroke:#ca8a04,stroke-width:1px
+    style M2 fill:#fef9c3,stroke:#ca8a04,stroke-width:1px
+    style M3 fill:#fef9c3,stroke:#ca8a04,stroke-width:1px
+    style M4 fill:#fef9c3,stroke:#ca8a04,stroke-width:1px

@@ -5,6 +5,21 @@
 
 ---
 
+## DEMO LOGIN CHEAT SHEET (all passwords: demo123)
+
+| Role     | Email                    | Used By              |
+|----------|--------------------------|----------------------|
+| Admin    | david@pureblooms.com     | P1 David (dashboard) |
+| Seller   | johnpaul@pureblooms.com  | P5 John Paul (ops)   |
+| Seller   | von@pureblooms.com       | P6 Von Eiron (ops)   |
+| Customer | brix@customer.com        | P3 Brix (storefront) |
+| Customer | ydel@customer.com        | P4 Ydel (storefront) |
+
+Site URL: **https://37ab-136-239-226-85.ngrok-free.app** (changes per ngrok session)
+QR code: on Slide 1 (bottom-right corner). Regenerate with `python3 regenerate_qr.py`
+
+---
+
 ## THE CAST & STAKEHOLDERS
 
 | Speaker Label | Student Name | Role / Department | Persona Played in Demo |
@@ -103,6 +118,10 @@
 
 *(Screen: PureBlooms homepage, storefront loaded)*
 
+> **DEMO PREP:** Login as **brix@customer.com / demo123** before this act starts.
+> Have a second browser tab ready logged out (for storefront browsing view).
+> Site: **https://37ab-136-239-226-85.ngrok-free.app**
+
 **[S3-1] P3 (Brix):**
 > "As a customer, I want a storefront I can trust. The moment I land on the PureBlooms homepage, I see featured products, categories, and a clean, responsive layout. There's no clutter, making my browsing experience smooth."
 > 
@@ -112,26 +131,31 @@
 > "From a design perspective, this layout minimizes what we call *cognitive load*. The product card displays only essential details: image, name, category, and price. This minimalist design helps guide the customer toward a decision quickly."
 > 
 > *(Demo Cues: Click on a product to view the details page)*
+> **ACTION:** Click "Classic Red Rose Bouquet" (P2,500) -> shows full description, stock status
 
 **[S3-3] P3 (Brix):**
 > "I can add items to my shopping cart, or use the **'Buy Now'** button to skip the cart altogether. This direct checkout path respects the customer's time."
 > 
 > *(Demo Cues: Click "Buy Now" to open the Checkout Page)*
+> **ACTION:** Click "Add to Cart" -> go to /customer/cart -> show quantity controls -> click "Proceed to Checkout"
 
 **[S3-4] P4 (Ydel Letice):**
 > "On the checkout page, the system offers **customizable add-ons** like gift wrapping or a message card. These are not hardcoded; the admin can update, price, and toggle these add-ons dynamically. This is a subtle yet powerful tool for average order value optimization."
 > 
 > *(Demo Cues: Select an add-on, then scroll to payment methods)*
+> **ACTION:** On /customer/checkout -> select "Gift Wrapping - Premium" (P150) and "Personalized Message Card" (P50) -> scroll down to show total updating
 
 **[S3-5] P3 (Brix):**
 > "For payment, we support Cash on Delivery and GCash. I'll select Cash on Delivery, fill in my shipping address, and submit the order."
 > 
 > *(Demo Cues: Enter mock delivery details, submit checkout)*
+> **ACTION:** Select "Cash on Delivery" -> fill form: Name: Brix Cruz, Address: 123 Sample Street, City: Tagudin, ZIP: 2728, Phone: 09175555555 -> click "Place Order"
 
 **[S3-6] P4 (Ydel Letice):**
 > "Once submitted, the system generates a unique order tracking number and sends an automated confirmation email. Now, let's track our order."
 > 
 > *(Demo Cues: Navigate to the Order Tracking page)*
+> **ACTION:** On the order success page -> copy the order number -> (optional) open Mailpit at :8025 to show confirmation email -> click "Track Order"
 
 **[S3-7] P3 (Brix):**
 > "Instead of messaging a seller and waiting for replies, I can see a live status timeline: Pending, Processing, Shipped, and Delivered. The process is completely transparent."
@@ -145,6 +169,10 @@
 *🎯 Rubric: System Functionality (40%) + OM Integration (Controlling, Financials, Inventory)*
 
 *(Screen: Admin Dashboard)*
+
+> **DEMO PREP:** Switch browser to admin login: **johnpaul@pureblooms.com / demo123** (Seller role)
+> Or use **david@pureblooms.com / demo123** for full admin access.
+> Navigate to /admin/dashboard before this act starts.
 
 **[S4-1] P5 (John Paul):**
 > "Now let's switch roles. As the business owner or operations manager, this dashboard is my control room. The moment I log in, I get real-time operational insights."
@@ -163,26 +191,31 @@
 > "Here is our order pipeline. Every transaction is logged here. As the administrator, I can update the order status as it moves from Pending to Shipped, and finally to Delivered."
 > 
 > *(Demo Cues: Change the status of our test order to 'Processing' then 'Shipped')*
+> **ACTION:** On /admin/orders -> find DEMO-0001 (Pending, Brix) -> click Edit -> change status Pending -> Processing -> Shipped -> show the timestamp updates
 
 **[S4-5] P6 (Von Eiron):**
 > "This pipeline acts as our digital operations flow. Next, let's look at the financial and inventory analytics under the **Reports** section."
 > 
 > *(Demo Cues: Navigate to Reports -> Sales Report)*
+> **ACTION:** Click sidebar "Reports" -> /admin/reports/sales
 
 **[S4-6] P5 (John Paul):**
 > "Under Sales Reports, we can see monthly revenue trends and average order values. This integrates the **Financial Management** aspect of OM directly into the system, avoiding the need for messy offline bookkeeping."
 > 
 > *(Demo Cues: Navigate to Reports -> Inventory Report)*
+> **ACTION:** Click "Inventory Report" tab -> /admin/reports/inventory
 
 **[S4-7] P6 (Von Eiron):**
 > "The Inventory Report tracks stock levels and shows us the total monetary value of our warehouse asset. Knowing this value is crucial for balance sheets and cost control."
 > 
 > *(Demo Cues: Navigate to Reports -> Customer Report)*
+> **ACTION:** Click "Customer Report" tab -> /admin/reports/customers
 
 **[S4-8] P5 (John Paul):**
 > "Our Customer Report functions as our CRM (Customer Relationship Management) database, listing order frequencies and helping us track buyer retention."
 > 
 > *(Demo Cues: Navigate to Settings)*
+> **ACTION:** Click sidebar "Settings" -> /admin/settings
 
 **[S4-9] P6 (Von Eiron):**
 > "Lastly, the Settings page controls shop variables, payment methods, and includes a **Maintenance Mode** toggle to temporarily take the store offline gracefully. This represents the **Planning** function: defining boundaries for daily operations."

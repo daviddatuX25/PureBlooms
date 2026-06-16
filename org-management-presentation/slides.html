@@ -178,6 +178,61 @@
             box-shadow: inset 0 6px 30px rgba(0, 0, 0, 0.6);
         }
 
+        /* QR Code Demo Badge */
+        .slide-right-with-qr {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .slide-right-with-qr .org-chart-graphic {
+            flex-shrink: 1;
+            min-height: 0;
+        }
+
+        .qr-badge {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 14px;
+            padding: 10px 14px 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+            flex-shrink: 0;
+            width: fit-content;
+        }
+
+        .qr-badge img {
+            width: 90px;
+            height: 90px;
+            border-radius: 6px;
+            display: block;
+        }
+
+        .qr-badge .qr-label {
+            font-family: var(--font-header);
+            font-size: 0.62rem;
+            color: #0c1210;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .qr-badge .qr-url {
+            font-family: var(--font-body);
+            font-size: 0.55rem;
+            color: #6b7280;
+            text-align: center;
+            word-break: break-all;
+            line-height: 1.2;
+        }
+
         /* Slide 2: Problem Statement */
         .problem-list {
             list-style: none;
@@ -490,7 +545,8 @@
                         </div>
                     </div>
                     <div class="slide-right">
-                        <div class="org-chart-graphic">
+                        <div class="slide-right-with-qr">
+                            <div class="org-chart-graphic">
                PureBlooms Organization
                      │
      ┌───────────────┼───────────────┐
@@ -505,6 +561,12 @@
             │ Narrators / PM  │
             │     P1 & P2     │
             └─────────────────┘</div>
+                            <div class="qr-badge">
+                                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQgAAAEIAQAAAACLjVdSAAABjElEQVR4nO2Zy67DQAhDj6v8/y/7LoDJKJuuStGdNlUzIV5YiIehMm8+r3eAH+IfIy5QnIwsAzLybZ3CtM0fGJZXEBberFOYNiIkER4RmAyOsM5i+nHEtZ0NFgIicTp5TEHs/ojCUbdeHlMQF2SpAIQRli0v6xSmPQhczvDjqtdTmLbFx8oN7XmyTlOY9sWH90P+lu20+HhlotgoXRHNFmOfpz9kVodV+sKUVO3jMQVRPRaXC1SlQyFDpjBtjA9Tet0qderyzBSmnfmSY9yyxTwXrprCtK2/OFqLybpaZ07sL5Ur3tT6HTDn1Y9XVQ5F6Ygh1xJYOq9+hPKyQ4ClVnda8Yl6PZKDnGottl3ZiflSgqx0O7kkS3k2iunHETm21NeRQLdnTsuXbaJNxX5r9rhPYdq+/6hC6hUqB+qPbb8ehRRHjJhYlo1h2ueP1OY4dNmdLAfu1x+ICAzJOIf/qUw/hHisxdJWzxxZP/b2Soy3ufs4T39crL8q15gvY2U1mcO0XX98lccPMRPxB2wn7ZyFS+qFAAAAAElFTkSuQmCC" alt="Scan to open PureBlooms demo" />
+                                <span class="qr-label">Scan to Open Demo</span>
+                                <span class="qr-url">PureBlooms Live Site</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

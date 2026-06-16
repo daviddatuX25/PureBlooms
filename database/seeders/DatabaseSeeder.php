@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,11 +14,25 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $this->command->info('Starting PureBlooms database seeding...');
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // 1. Core reference data
+        $this->call(CategorySeeder::class);
+        $this->call(SettingSeeder::class);
+        $this->call(AddonSeeder::class);
+
+        // 2. Products depend on categories
+        $this->call(ProductSeeder::class);
+
+        // 3. Demo users
+        $this->call(DemoUserSeeder::class);
+
+        // 4. Demo orders depend on users, products, addons, settings
+        $this->call(DemoOrderSeeder::class);
+
+        // 5. Original admin seeder (keep for backwards compat)
+        $this->call(\Database\Seeders\AdminUserSeeder::class);
+
+        $this->command->info('PureBlooms database seeding completed!');
     }
 }

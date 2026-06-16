@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PureBlooms — Printable Script Sheets (Per Speaker)</title>
+<style>
+  /* ===== PRINT-OPTIMIZED: 8pt, cramped, one sheet per speaker ===== */
+  @page {
+    size: A4 portrait;
+    margin: 8mm 8mm 8mm 8mm;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 8pt;
+    line-height: 1.18;
+    color: #111;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .speaker-sheet {
+    page-break-after: always;
+    break-after: page;
+    padding: 0;
+  }
+  .speaker-sheet:last-child { page-break-after: auto; }
+
+  /* Header band — dense, tiny */
+  .sh {
+    display: flex; justify-content: space-between; align-items: baseline;
+    border-bottom: 1.8pt solid #111;
+    padding-bottom: 2pt; margin-bottom: 4pt;
+  }
+  .sh .label { font-size: 13pt; font-weight: 800; letter-spacing: .5pt; }
+  .sh .name { font-size: 9pt; font-weight: 700; }
+  .sh .meta { font-size: 6.5pt; color: #444; text-align: right; line-height: 1.1; }
+
+  .cue-banner {
+    font-size: 6.3pt; color: #555; background: #f0f0f0;
+    border-left: 2pt solid #888; padding: 1.5pt 4pt;
+    margin: 0 0 4pt 0;
+  }
+  .cue-banner b { color: #222; }
+
+  /* Block = one spoken beat */
+  .beat {
+    margin-bottom: 3.2pt;
+    border-left: 2pt solid #ccc;
+    padding: 1pt 0 1pt 5pt;
+  }
+  .beat .tag {
+    font-size: 6pt; font-weight: 700; color: #666;
+    text-transform: uppercase; letter-spacing: .3pt;
+  }
+  .beat .line { font-size: 8pt; margin: 0.5pt 0 0 0; }
+  .beat .demo {
+    font-size: 6.4pt; color: #b00; margin-top: 1pt; font-style: italic;
+  }
+  .beat .demo b { font-style: normal; color: #800; }
+
+  /* Cues when entering / leaving */
+  .handoff { font-size: 6.3pt; color: #555; margin: 2pt 0; }
+  .handoff b { color: #111; }
+
+  /* Quick reference footer */
+  .qref {
+    margin-top: 5pt; border-top: .5pt solid #aaa; padding-top: 3pt;
+    font-size: 6.3pt; color: #333;
+  }
+  .qref h4 { margin: 0 0 1pt 0; font-size: 6.8pt; text-transform: uppercase; letter-spacing: .3pt; }
+  .qref table { border-collapse: collapse; width: 100%; font-size: 6.2pt; }
+  .qref td { padding: 0.6pt 3pt 0.6pt 0; vertical-align: top; }
+  .qref td.k { font-weight: 700; white-space: nowrap; width: 30%; }
+
+  .nologo { font-size: 5.8pt; color: #999; text-align: center; margin-top: 4pt; }
+
+  /* Two-column beat layout to cram more — optional per sheet */
+  .dense-2col { column-count: 2; column-gap: 6pt; }
+  .dense-2col .beat { break-inside: avoid; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- P1 — DAVID -->
+<!-- ============================================================ -->
+<section class="speaker-sheet">
+  <div class="sh">
+    <span class="label">P1</span>
+    <span class="name">DAVID · Project Manager / Narrator 1 · Facilitator / Narrative Lead</span>
+    <span class="meta">PureBlooms OM Presentation<br>Printable Script Sheet · 8pt</span>
+  </div>
+
+  <div class="cue-banner"><b>YOU SPEAK IN:</b> ACT 0 (S1-1→S1-3) · ACT 1 (S2-4, S2-5) · ACT 5 closing (S6-3). You also open the whole presentation. Keep the narrative honest and confident. Lead all transitions.</div>
+
+  <div class="dense-2col">
+
+  <div class="beat">
+    <div class="tag">ACT 0 · [S1-1]</div>
+    <p class="line">"Good morning, everyone. Before we walk you through the system we've built, we want to share a quick reality about our project."</p>
+  </div>
+
+  <div class="beat">
+    <div class="tag">ACT 0 · [S1-2]</div>
+    <p class="line">"In truth, PureBlooms was developed by a single developer working directly with a client. However, to portray this case study in an Organizational Management setting and demonstrate its commercial viability, we have structured our presentation a little differently today."</p>
+  </div>
+
+  <div class="beat">
+    <div class="tag">ACT 0 · [S1-3]</div>
+    <p class="line">"We will be stepping into the roles of the key organizational stakeholders who interact with a system like this: the Project Managers, the Customers, the Sellers, and the Developers. This allows us to analyze how PureBlooms fits into the broader principles of Organizational Management."</p>
+    <p class="handoff"><b>→ HAND OFF:</b> Ruth Joy (P2) continues the frame setup.</p>
+  </div>
+
+  <div class="beat">
+    <div class="tag">ACT 1 · [S2-4] · after Brix's pain-point hook</div>
+    <p class="line">"From an organizational standpoint, this represents a major management gap. Small businesses in the gifting space often operate without any formal system. Orders are tracked in messy chat logs, inventory is guessed, and revenue is calculated from memory. The core management functions are simply absent."</p>
+  </div>
+
+  <div class="beat">
+    <div class="tag">ACT 1 · [S2-5]</div>
+    <p class="line">"PureBlooms is designed to bridge this gap. It's not just a website; it is an operational control system that structures these chaotic processes. Let's show you how this looks on the customer's end."</p>
+    <p class="demo"><b>DEMO CUE (screen):</b> PureBlooms storefront loads. Hand off to P3 &amp; P4.</p>
+  </div>
+
+  <div class="beat">
+    <div class="tag">ACT 5 · [S6-3] · FINAL CLOSING · after Ruth Joy's 4 functions</div>
+    <p class="line">"We are IT students, but today we wanted to show you more than just code. We wanted to present an organization in motion: how it coordinates, operates, and controls its data."</p>
+    <p class="line">"PureBlooms transforms a chaotic, unorganized flower shop into a structured business entity. Thank you, and we are now open for your questions."</p>
+    <p class="handoff"><b>→ END OF PRESENTATION. Stay for Q&amp;A.</b></p>
+  </div>
+
+  </div><!-- /dense-2col -->
+
+  <div class="qref">
+    <h4>Your quick reference</h4>
+    <table>
+      <tr><td class="k">Demo login (if needed)</td><td>david@pureblooms.com · demo123 (Admin)</td></tr>
+      <tr><td class="k">Site URL</td><td>https://37ab-136-239-226-85.ngrok-free.app (changes per ngrok session)</td></tr>
+      <tr><td class="k">Duration budget</td><td>ACT 0 ~1.5min (shared w/ P2) · ACT 1 lines ~40s · ACT 5 close ~40s</td></tr>
+      <tr><td class="k">Contributions</td><td>Presentation Coordination, Script Writing, Presenter Dashboard Integration, Docker Configuration</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- P2 — RUTH JOY -->
+<!-- ============================================================ -->
+<section class="speaker-sheet">
+  <div class="sh">
+    <span class="label">P2</span>
+    <span class="name">RUTH JOY · Project Manager / Narrator 2 · OM Strategy Lead</span>
+    <span class="meta">PureBlooms OM Presentation<br>Printable Script Sheet · 8pt</span>
+  </div>
+
+  <div class="cue-banner"><b>YOU SPEAK IN:</b> ACT 0 (S1-4, S1-5) · ACT 5 closing (S6-1, S6-2). You own the OM-theory framing — both the setup and the wrap. Land the four functions of management clearly.</div>
+
+  <div class="dense-2col">
+
+  <div class="beat">
+    <div class="tag">ACT 0 · [S1-4] · after David's S1-3</div>
+    <p class="line">"Exactly. By analyzing the system through these distinct lenses, we can map how a simple flower shop operates under the four core functions of management: <b>Planning, Organizing, Leading, and Controlling</b>."</p>
+  </div>
+
+  <div class="beat">
+    <div class="tag">ACT 0 · [S1-5]</div>
+    <p class="line">"Our system is called <b>PureBlooms</b>, an e-commerce platform designed for a local flower shop. Let's start by looking at the organizational gap and the core business problem it solves. Brix, take us away."</p>
+    <p class="handoff"><b>→ HAND OFF:</b> Brix (P3) — the problem hook.</p>
+  </div>
+
+  <div class="beat">
+    <div class="tag">ACT 5 · [S6-1] · after Developer act (P7/P8)</div>
+    <p class="line">"To bring this full circle, Organizational Management is centered around four core functions, and we have built PureBlooms around all four:"</p>
+  </div>
+
+  <div class="beat">
+    <div class="tag">ACT 5 · [S6-2] · the four functions — speak slowly, enumerate</div>
+    <p class="line">"1. <b>Planning:</b> Managed through the Settings module, defining the parameters, payment rules, and operating states of the shop."</p>
+    <p class="line">"2. <b>Organizing:</b> Enforced by our Role-Based Access Control and user permission hierarchies."</p>
+    <p class="line">"3. <b>Leading:</b> Supported by our live KPI dashboard, which gives leadership the information they need to guide the business."</p>
+    <p class="line">"4. <b>Controlling:</b> Implemented through our real-time inventory alerts, order pipelines, and structured reports."</p>
+    <p class="handoff"><b>→ HAND OFF:</b> David (P1) for the final close.</p>
+  </div>
+
+  </div><!-- /dense-2col -->
+
+  <div class="qref">
+    <h4>Your quick reference</h4>
+    <table>
+      <tr><td class="k">Site URL</td><td>https://37ab-136-239-226-85.ngrok-free.app (changes per ngrok session)</td></tr>
+      <tr><td class="k">Key emphasis</td><td>The 4 functions: Planning · Organizing · Leading · Controlling</td></tr>
+      <tr><td class="k">Duration budget</td><td>ACT 0 ~50s (shared w/ P1) · ACT 5 close ~50s</td></tr>
+      <tr><td class="k">Contributions</td><td>OM Integration Analysis, Presentation Slides design, Narrator</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- P3 — BRIX -->
+<!-- ============================================================ -->
+<section class="speaker-sheet">
+  <div class="sh">
+    <span class="label">P3</span>
+    <span class="name">BRIX · Customer Relations 1 · The Customer (Storefront UX)</span>
+    <span class="meta">PureBlooms OM Presentation<br>Printable Script Sheet · 8pt</span>
+  </div>
+
+  <div class="cue-banner"><b>YOU SPEAK IN:</b> ACT 1 problem hook (S2-1→S2-3) · ACT 2 customer experience (S3-1, S3-3, S3-5, S3-7). You alternate with Ydel (P4). <b>You drive the live storefront demo.</b> Log in as brix@customer.com BEFORE Act 2.</div>
+
+  <div class="dense-2col">
+
+  <div class="beat">
+    <div class="tag">ACT 1 · [S2-1] · the hook</div>
+    <p class="line">"Picture this. You want to send flowers to someone special. You search on Facebook and find a small flower shop. You DM them. You wait. You follow up. They reply hours later, only to tell you that the bouquet you wanted is already out of stock."</p>
+  </div>
+
+  <div class="beat">
+    <div class="tag">ACT 1 · [S2-2]</div>
+    <p class="line">"So you try another shop. You message them, and they send you a GCash QR code. You pay, send the screenshot, and... nothing. No confirmation, no receipt, no idea when it will arrive. You just wait, hope, and stress."</p>
+  </div>
+
+  <div class="beat">
+    <div class="tag">ACT 1 · [S2-3]</div>
+    <p class="line">"This is the everyday reality of buying from a small, unorganized flower vendor. And it is completely unnecessary."</p>
+    <p class="handoff"><b>→ HAND OFF:</b> David (P1) reframes it as an OM gap, then back to you for Act 2.</p>
+  </div>
+
+  <div class="beat">
+    <div class="tag">ACT 2 · [S3-1] · storefront</div>
+    <p class="line">"As a customer, I want a storefront I can trust. The moment I land on the PureBlooms homepage, I see featured products, categories, and a clean, responsive layout. There's no clutter, making my browsing experience smooth."</p>
+    <p class="demo"><b>DEMO:</b> Scroll through the featured product grid slowly.</p>
+  </div>
+
+  <div class="beat">
+    <div class="tag">ACT 2 · [S3-3] · cart &amp; buy now</div>
+    <p class="line">"I can add items to my shopping cart, or use the <b>'Buy Now'</b> button to skip the cart altogether. This direct checkout path respects the customer's time."</p>
+    <p class="demo"><b>ACTION:</b> Click "Add to Cart" → go to /customer/cart → show quantity controls → click "Proceed to Checkout".</p>
+  </div>
+
+  <div class="beat">
+    <div class="tag">ACT 2 · [S3-5] · payment</div>
+    <p class="line">"For payment, we support Cash on Delivery and GCash. I'll select Cash on Delivery, fill in my shipping address, and submit the order."</p>
+    <p class="demo"><b>ACTION:</b> Select "Cash on Delivery" → fill: Name Brix Cruz, Address 123 Sample Street, City Tagudin, ZIP 2728, Phone 09175555555 → click "Place Order".</p>
+  </div>
+
+  <div class="beat">
+    <div class="tag">ACT 2 · [S3-7] · tracking timeline</div>
+    <p class="line">"Instead of messaging a seller and waiting for replies, I can see a live status timeline: Pending, Processing, Shipped, and Delivered. The process is completely transparent."</p>
+    <p class="handoff"><b>→ HAND OFF:</b> John Paul &amp; Von Eiron (P5/P6) — operations center.</p>
+  </div>
+
+  </div><!-- /dense-2col -->
+
+  <div class="qref">
+    <h4>Your quick reference</h4>
+    <table>
+      <tr><td class="k">Demo login</td><td>brix@customer.com · demo123 (Customer) — log in BEFORE Act 2</td></tr>
+      <tr><td class="k">Also ready</td><td>Second browser tab logged OUT (for storefront browsing view)</td></tr>
+      <tr><td class="k">Site URL</td><td>https://37ab-136-239-226-85.ngrok-free.app</td></tr>
+      <tr><td class="k">Duration budget</td><td>Act 1 ~40s · Act 2 ~1.5min (shared w/ P4)</td></tr>
+      <tr><td class="k">Contributions</td><td>Customer Journey Flow Testing, Storefront Feedback, Persona presenter</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- P4 — YDEL LETICE -->
+<!-- ============================================================ -->
+<section class="speaker-sheet">
+  <div class="sh">
+    <span class="label">P4</span>
+    <span class="name">YDEL LETICE · Customer Relations 2 · The Customer (UX Analyst)</span>
+    <span class="meta">PureBlooms OM Presentation<br>Printable Script Sheet · 8pt</span>
+  </div>
+
+  <div class="cue-banner"><b>YOU SPEAK IN:</b> ACT 2 customer experience (S3-2, S3-4, S3-6). You alternate with Brix (P3). Your angle = UX/design analysis. Watch Brix's actions and chime in with the "why it matters."</div>
+
+  <div class="dense-2col">
+
+  <div class="beat">
+    <div class="tag">ACT 2 · [S3-2] · after Brix scrolls homepage</div>
+    <p class="line">"From a design perspective, this layout minimizes what we call <b>cognitive load</b>. The product card displays only essential details: image, name, category, and price. This minimalist design helps guide the customer toward a decision quickly."</p>
+    <p class="demo"><b>ACTION (you drive):</b> Click "Classic Red Rose Bouquet" (P2,500) → shows full description, stock status.</p>
+  </div>
+
+  <div class="beat">
+    <div class="tag">ACT 2 · [S3-4] · add-ons · after Brix's cart demo</div>
+    <p class="line">"On the checkout page, the system offers <b>customizable add-ons</b> like gift wrapping or a message card. These are not hardcoded; the admin can update, price, and toggle these add-ons dynamically. This is a subtle yet powerful tool for average order value optimization."</p>
+    <p class="demo"><b>ACTION (you drive):</b> On /customer/checkout → select "Gift Wrapping - Premium" (P150) + "Personalized Message Card" (P50) → scroll down to show total updating.</p>
+  </div>
+
+  <div class="beat">
+    <div class="tag">ACT 2 · [S3-6] · confirmation &amp; email</div>
+    <p class="line">"Once submitted, the system generates a unique order tracking number and sends an automated confirmation email. Now, let's track our order."</p>
+    <p class="demo"><b>ACTION (you drive):</b> On order success page → copy the order number → (optional) open Mailpit at :8025 to show confirmation email → click "Track Order".</p>
+  </div>
+
+  </div><!-- /dense-2col -->
+
+  <div class="qref">
+    <h4>Your quick reference</h4>
+    <table>
+      <tr><td class="k">Demo login</td><td>ydel@customer.com · demo123 (Customer)</td></tr>
+      <tr><td class="k">Key phrase</td><td>"cognitive load" — land it clearly</td></tr>
+      <tr><td class="k">Mailpit (email preview)</td><td>http://localhost:8025</td></tr>
+      <tr><td class="k">Site URL</td><td>https://37ab-136-239-226-85.ngrok-free.app</td></tr>
+      <tr><td class="k">Duration budget</td><td>Act 2 ~1.5min (shared w/ P3)</td></tr>
+      <tr><td class="k">Contributions</td><td>UI/UX Design auditing, Slides formatting, Customer Persona presenter</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- P5 — JOHN PAUL -->
+<!-- ============================================================ -->
+<section class="speaker-sheet">
+  <div class="sh">
+    <span class="label">P5</span>
+    <span class="name">JOHN PAUL · Operations Department 1 · The Seller (Operations Manager)</span>
+    <span class="meta">PureBlooms OM Presentation<br>Printable Script Sheet · 8pt</span>
+  </div>
+
+  <div class="cue-banner"><b>YOU SPEAK IN:</b> ACT 3 seller experience (S4-1, S4-4, S4-6, S4-8). You alternate with Von Eiron (P6). You drive the admin dashboard demo. Log in as johnpaul@pureblooms.com BEFORE Act 3, navigate to /admin/dashboard.</div>
+
+  <div class="dense-2col">
+
+  <div class="beat">
+    <div class="tag">ACT 3 · [S4-1] · enter operations</div>
+    <p class="line">"Now let's switch roles. As the business owner or operations manager, this dashboard is my control room. The moment I log in, I get real-time operational insights."</p>
+    <p class="demo"><b>DEMO:</b> Point to the KPI cards on the dashboard.</p>
+  </div>
+
+  <div class="beat">
+    <div class="tag">ACT 3 · [S4-4] · order pipeline · after Von's KPI lines</div>
+    <p class="line">"Here is our order pipeline. Every transaction is logged here. As the administrator, I can update the order status as it moves from Pending to Shipped, and finally to Delivered."</p>
+    <p class="demo"><b>ACTION (you drive):</b> /admin/orders → find DEMO-0001 (Pending, Brix) → click Edit → change status Pending → Processing → Shipped → show timestamp updates.</p>
+  </div>
+
+  <div class="beat">
+    <div class="tag">ACT 3 · [S4-6] · sales reports</div>
+    <p class="line">"Under Sales Reports, we can see monthly revenue trends and average order values. This integrates the <b>Financial Management</b> aspect of OM directly into the system, avoiding the need for messy offline bookkeeping."</p>
+    <p class="demo"><b>ACTION (you drive):</b> Click sidebar "Reports" → /admin/reports/sales.</p>
+  </div>
+
+  <div class="beat">
+    <div class="tag">ACT 3 · [S4-8] · customer report (CRM)</div>
+    <p class="line">"Our Customer Report functions as our CRM (Customer Relationship Management) database, listing order frequencies and helping us track buyer retention."</p>
+    <p class="demo"><b>ACTION (you drive):</b> Click "Customer Report" tab → /admin/reports/customers.</p>
+  </div>
+
+  </div><!-- /dense-2col -->
+
+  <div class="qref">
+    <h4>Your quick reference</h4>
+    <table>
+      <tr><td class="k">Demo login</td><td>johnpaul@pureblooms.com · demo123 (Seller role)</td></tr>
+      <tr><td class="k">Fallback login</td><td>david@pureblooms.com · demo123 (full admin access)</td></tr>
+      <tr><td class="k">Start at</td><td>/admin/dashboard</td></tr>
+      <tr><td class="k">Site URL</td><td>https://37ab-136-239-226-85.ngrok-free.app</td></tr>
+      <tr><td class="k">Duration budget</td><td>Act 3 ~1.5min (shared w/ P6)</td></tr>
+      <tr><td class="k">Contributions</td><td>Admin Panel features validation, database testing, Seller Persona presenter</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- P6 — VON EIRON -->
+<!-- ============================================================ -->
+<section class="speaker-sheet">
+  <div class="sh">
+    <span class="label">P6</span>
+    <span class="name">VON EIRON · Operations Department 2 · The Seller (Financial/Inventory Lead)</span>
+    <span class="meta">PureBlooms OM Presentation<br>Printable Script Sheet · 8pt</span>
+  </div>
+
+  <div class="cue-banner"><b>YOU SPEAK IN:</b> ACT 3 seller experience (S4-2, S4-3, S4-5, S4-7, S4-9). You alternate with John Paul (P5). Your angle = KPIs, Controlling function, financials &amp; inventory.</div>
+
+  <div class="dense-2col">
+
+  <div class="beat">
+    <div class="tag">ACT 3 · [S4-2] · KPIs = Controlling</div>
+    <p class="line">"These metrics, including Total Revenue, Orders, Pending Orders, Low Stock Alerts, and Add-on Sales, represent our <b>KPIs (Key Performance Indicators)</b>. In Organizational Management, monitoring these values is the <b>Controlling</b> function. It tells us if our logistics are matching demand."</p>
+  </div>
+
+  <div class="beat">
+    <div class="tag">ACT 3 · [S4-3] · low stock = proactive</div>
+    <p class="line">"A 'Low Stock Alert' tells us exactly when to replenish inventory, moving us from reactive firefighting to proactive management."</p>
+  </div>
+
+  <div class="beat">
+    <div class="tag">ACT 3 · [S4-5] · bridge to reports</div>
+    <p class="line">"This pipeline acts as our digital operations flow. Next, let's look at the financial and inventory analytics under the <b>Reports</b> section."</p>
+    <p class="demo"><b>ACTION (John Paul drives):</b> Click sidebar "Reports" → /admin/reports/sales.</p>
+  </div>
+
+  <div class="beat">
+    <div class="tag">ACT 3 · [S4-7] · inventory report</div>
+    <p class="line">"The Inventory Report tracks stock levels and shows us the total monetary value of our warehouse asset. Knowing this value is crucial for balance sheets and cost control."</p>
+    <p class="demo"><b>ACTION (John Paul drives):</b> Click "Inventory Report" tab → /admin/reports/inventory.</p>
+  </div>
+
+  <div class="beat">
+    <div class="tag">ACT 3 · [S4-9] · settings = Planning</div>
+    <p class="line">"Lastly, the Settings page controls shop variables, payment methods, and includes a <b>Maintenance Mode</b> toggle to temporarily take the store offline gracefully. This represents the <b>Planning</b> function: defining boundaries for daily operations."</p>
+    <p class="handoff"><b>→ HAND OFF:</b> Aaron Jake &amp; Novel (P7/P8) — system architecture.</p>
+  </div>
+
+  </div><!-- /dense-2col -->
+
+  <div class="qref">
+    <h4>Your quick reference</h4>
+    <table>
+      <tr><td class="k">Demo login</td><td>von@pureblooms.com · demo123 (Seller role)</td></tr>
+      <tr><td class="k">Key concepts</td><td>KPIs · Controlling function · Low Stock = proactive · Settings = Planning</td></tr>
+      <tr><td class="k">Site URL</td><td>https://37ab-136-239-226-85.ngrok-free.app</td></tr>
+      <tr><td class="k">Duration budget</td><td>Act 3 ~1.5min (shared w/ P5)</td></tr>
+      <tr><td class="k">Contributions</td><td>Financial &amp; Inventory reports testing, OM documentation contribution, Seller Persona presenter</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- P7 — AARON JAKE -->
+<!-- ============================================================ -->
+<section class="speaker-sheet">
+  <div class="sh">
+    <span class="label">P7</span>
+    <span class="name">AARON JAKE · Development Department 1 · Lead Developer (System Architect)</span>
+    <span class="meta">PureBlooms OM Presentation<br>Printable Script Sheet · 8pt</span>
+  </div>
+
+  <div class="cue-banner"><b>YOU SPEAK IN:</b> ACT 4 developer perspective (S5-1, S5-2, S5-4). You alternate with Novel (P8). Your angle = architecture, stack, security. Confident engineering tone.</div>
+
+  <div class="dense-2col">
+
+  <div class="beat">
+    <div class="tag">ACT 4 · [S5-1] · open the hood</div>
+    <p class="line">"Now, let's peek under the hood. Building a system that looks good is only half the battle. Making it reliable, secure, and production-ready is where engineering matters."</p>
+  </div>
+
+  <div class="beat">
+    <div class="tag">ACT 4 · [S5-2] · the stack</div>
+    <p class="line">"PureBlooms is built on the <b>Laravel</b> framework using a clean Model-View-Controller (MVC) architecture. The frontend is powered by <b>Blade</b> templates and <b>Tailwind CSS</b>, bundled with <b>Vite</b> for fast load times. The entire application is containerized using <b>Docker</b>, ensuring that it runs reliably in any environment."</p>
+  </div>
+
+  <div class="beat">
+    <div class="tag">ACT 4 · [S5-4] · security · after Novel's data-integrity line</div>
+    <p class="line">"Second, <b>Security</b>. Addon prices are validated strictly on the server-side, meaning users cannot alter prices using browser inspector tools. We also implement password throttling to block brute-force attempts, and strict Role-Based Access Control (RBAC) middleware to protect the admin panel."</p>
+  </div>
+
+  </div><!-- /dense-2col -->
+
+  <div class="qref">
+    <h4>Your quick reference</h4>
+    <table>
+      <tr><td class="k">Stack to name</td><td>Laravel (MVC) · Blade · Tailwind CSS · Vite · Docker · MySQL</td></tr>
+      <tr><td class="k">Security points</td><td>Server-side price validation · password throttling · RBAC middleware</td></tr>
+      <tr><td class="k">Duration budget</td><td>Act 4 ~1.25min (shared w/ P8)</td></tr>
+      <tr><td class="k">Contributions</td><td>Main repository maintenance, Laravel codebase audit, Developer presenter</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- P8 — NOVEL -->
+<!-- ============================================================ -->
+<section class="speaker-sheet">
+  <div class="sh">
+    <span class="label">P8</span>
+    <span class="name">NOVEL · Development Department 2 · Backend Developer (Security &amp; QA)</span>
+    <span class="meta">PureBlooms OM Presentation<br>Printable Script Sheet · 8pt</span>
+  </div>
+
+  <div class="cue-banner"><b>YOU SPEAK IN:</b> ACT 4 developer perspective (S5-3, S5-5). You alternate with Aaron Jake (P7). Your angle = non-functional requirements: data integrity, reliability, speed.</div>
+
+  <div class="dense-2col">
+
+  <div class="beat">
+    <div class="tag">ACT 4 · [S5-3] · non-functional reqs + data integrity</div>
+    <p class="line">"But beyond the stack, we focused on <b>Non-Functional Requirements</b> to solve common real-world failure points."</p>
+    <p class="line">"First, <b>Data Integrity</b>. The checkout process is wrapped in database transactions. If database writes fail or a connection drops mid-process, the database rolls back completely. The customer is never double-billed, and stock is never deducted incorrectly."</p>
+  </div>
+
+  <div class="beat">
+    <div class="tag">ACT 4 · [S5-5] · reliability &amp; speed · after Aaron's security line</div>
+    <p class="line">"Third, <b>Reliability and Speed</b>. We prevent duplicate orders by generating unique cart session tokens. If a user double-clicks the purchase button, the system intercepts the duplicate request. We also cache shop settings to decrease database queries, and integrated an toggleable maintenance middleware."</p>
+    <p class="handoff"><b>→ HAND OFF:</b> Ruth Joy (P2) &amp; David (P1) — OM closing.</p>
+  </div>
+
+  </div><!-- /dense-2col -->
+
+  <div class="qref">
+    <h4>Your quick reference</h4>
+    <table>
+      <tr><td class="k">Your 3 pillars</td><td>Data Integrity (transactions) · Reliability (dup-token) · Speed (cache)</td></tr>
+      <tr><td class="k">Key phrase</td><td>"Non-Functional Requirements" — frame it deliberately</td></tr>
+      <tr><td class="k">Duration budget</td><td>Act 4 ~1.25min (shared w/ P7)</td></tr>
+      <tr><td class="k">Contributions</td><td>Security features validation, non-functional requirements auditing, Developer presenter</td></tr>
+    </table>
+  </div>
+</section>
+
+<div class="nologo">PureBlooms · OM Final Presentation · Printable Script Sheets · 8pt · One sheet per speaker · Page break = new speaker</div>
+
+</body>
+</html>
