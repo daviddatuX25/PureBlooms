@@ -195,6 +195,19 @@
             background: rgba(16, 185, 129, 0.05);
         }
 
+        .launch-card.live-demo:hover {
+            border-color: rgba(56, 189, 248, 0.5);
+            box-shadow: 0 20px 45px rgba(56, 189, 248, 0.1);
+        }
+
+        .launch-card.live-demo:hover .card-icon {
+            color: var(--accent-blue);
+            border-color: rgba(56, 189, 248, 0.3);
+            background: rgba(56, 189, 248, 0.05);
+        }
+
+        .live-demo .action-indicator { color: var(--accent-blue); }
+
         .card-details h3 {
             font-family: var(--font-header);
             font-size: 1.6rem;
@@ -508,7 +521,22 @@
 
         <!-- Launcher Grid -->
         <main class="launcher-grid">
-            
+
+            <!-- Live Demo Site Card -->
+            <a href="https://37ab-136-239-226-85.ngrok-free.app" target="_blank" rel="noopener noreferrer" class="launch-card live-demo">
+                <div class="card-icon">🌐</div>
+                <div class="card-details">
+                    <h3>Live Demo Site</h3>
+                    <p>Open the live PureBlooms Organizational Management system. Scan the QR code on the slides or click here to access the running application directly.</p>
+                    <div style="margin-top: 12px; font-size: 0.8rem; color: var(--accent-blue); display: flex; align-items: center; gap: 6px; font-weight: 600; line-height: 1.3;">
+                        <span>🔗 https://37ab-136-239-226-85.ngrok-free.app</span>
+                    </div>
+                </div>
+                <div class="action-indicator">
+                    Open Live Site →
+                </div>
+            </a>
+
             <!-- Slides Link Card -->
             <a href="slides.html" class="launch-card audience-slides">
                 <div class="card-icon">📺</div>
@@ -638,6 +666,7 @@
                 <div class="guide-tabs">
                     <button class="guide-tab-btn active" onclick="showGuide('slides')">📺 Audience Slides</button>
                     <button class="guide-tab-btn" onclick="showGuide('presenter')">⚡ Presenter Cockpit</button>
+                    <button class="guide-tab-btn" onclick="showGuide('live')">🌐 Live Demo Site</button>
                     <button class="guide-tab-btn" onclick="showGuide('markdown')">📝 System Report (MD)</button>
                     <button class="guide-tab-btn" onclick="showGuide('docx')">📥 Word Document (DOCX)</button>
                 </div>
@@ -654,6 +683,13 @@
                         <div class="guide-quote">"Eto naman ang cockpit panel para sa mismong presenters para iwas-kaba habang nagsasalita."</div>
                         <p><strong>Para saan ito?</strong> Ang screen na ito ay ginagamit ng mga speakers habang nagpe-present. Nilagyan natin ito ng live visual controls gaya ng timers at cues.</p>
                         <p><strong>Anong makikita rito?</strong> Mayroon itong listahan ng acts ng script, at may buttons para i-filter ang lines ng bawat tao (mula kay David hanggang kay Novel) para malinaw kung sino ang susunod na magsasalita.</p>
+                    </div>
+
+                    <div id="guide-content-live" class="guide-content">
+                        <div class="guide-quote">"Ito ang mismong running na system — pwedeng i-click o i-scan ang QR sa slides para magbukas."</div>
+                        <p><strong>Para saan ito?</strong> Buksan ang live PureBlooms OM system na naka-host sa ngrok. Dito ipapakita ang actual storefront, admin panel, at lahat ng operational modules sa real time.</p>
+                        <p><strong>Paano gamitin?</strong> I-click ang card sa taas o i-scan ang QR code na nasa Slide 1. Magbubukas ito sa bagong tab. Tingnan ang <strong>Demo Cheat Sheet</strong> para sa listahan ng login credentials at demo flow.</p>
+                        <p><strong>⚠️ Tandaan:</strong> Ang URL na ito ay nag-iiba kapag nag-restart ang ngrok. Kung hindi mag-load, humingi ng bagong URL kay David.</p>
                     </div>
                     
                     <div id="guide-content-markdown" class="guide-content">
